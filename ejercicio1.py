@@ -13,13 +13,17 @@ T 0.15
 
 b.         desarrollar las funcionas para comprimir y descomprimir un mensaje.
 '''
+
+datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
+datos1 = sorted(datos.items())
+print(datos1)
 from cola import*
 
 class nodoArbol(object):
     def __init__(self, info):
         self.izq= None
         self.der = None
-        self.info = info
+        self.info = info # le pasamos la información inicial del árbol, ¿raíz?
         
     def eliminar_nodo(raiz, clave):
         '''
@@ -47,9 +51,10 @@ class nodoArbol(object):
         '''
         Insertamos el nodo en el árbol
         '''
+        
         if raiz is None:
-            raiz = nodoArbol(dato)                        
-        elif dato < raiz.indo:
+             raiz = nodoArbol(dato)                        
+        elif dato < raiz.info:
             raiz.izq = nodoArbol.insertar_nodo(raiz.izq, dato)
         else:
             raiz.der = nodoArbol.insertar_nodo(raiz.der, dato)
@@ -79,13 +84,13 @@ class nodoArbol(object):
         '''
         pendientes = Cola()
         Cola.arribo(pendientes, raiz)
-        while not cola_vacia(pendientes):
-            nodo = atencion(pendientes)
+        while not Cola.cola_vacia(pendientes):
+            nodo = Cola.atencion(pendientes)
             print(nodo.info)
             if nodo.izq is not None:
-                arribo(pendientes, nodo.izq)
+                Cola.arribo(pendientes, nodo.izq)
             if nodo.der is not None:
-                arribo(pendientes, nodo.der)
+                Cola.arribo(pendientes, nodo.der)
     
     def buscar(raiz, clave):
         '''
@@ -127,3 +132,5 @@ class nodoArbol(object):
             nodoArbol.postorden(raiz.der)
             print(raiz.info)
             nodoArbol.postorden(raiz.izq)
+
+
