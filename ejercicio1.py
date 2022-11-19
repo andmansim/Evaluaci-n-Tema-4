@@ -45,19 +45,31 @@ class nodoArbol(object):
                     raiz.info = aux.info
         return raiz, x
     
-    def insertar_nodo(raiz, dato, dato1 = 0, dato_n = 0):
+    def insertar_nodo(raiz, dato, dato1,dato2):
         '''
         Insertamos el nodo en el árbol
         '''
-        raiz = dato_n
+       
         if raiz is None:
-            raiz = nodoArbol(dato)                        
-        elif dato < dato1:
-            raiz.izq = nodoArbol.insertar_nodo(raiz.izq, dato)
-            raiz.der = nodoArbol.insertar_nodo(raiz.der, dato1)
+            raiz = nodoArbol(dato1)                        
+        elif dato1 < raiz.info:
+            if dato == 1.0 :
+                busco = raiz
+                raiz.der = nodoArbol.insertar_nodo(busco.der, dato, dato1,dato2)
+                raiz.izq = nodoArbol.insertar_nodo(busco.izq, dato, dato2,dato1)
+            else:    
+                busco = arbol.buscar(dato)
+                raiz.izq = nodoArbol.insertar_nodo(busco.izq, dato, dato2,dato1)
+                raiz.der = nodoArbol.insertar_nodo(busco.der, dato, dato1,dato2)
         else:
-            raiz.der = nodoArbol.insertar_nodo(raiz.der, dato)
-            raiz.izq = nodoArbol.insertar_nodo(raiz.izq, dato1)
+            if raiz.info == 1.0 :
+                busco = raiz
+                raiz.der = nodoArbol.insertar_nodo(busco.der, dato, dato1, ato2)
+                raiz.izq = nodoArbol.insertar_nodo(busco.izq, dato, dato2,dato1)
+            else:
+                busco = arbol.buscar(dato)
+                raiz.der = nodoArbol.insertar_nodo(busco.der, dato, dato1,dato2)
+                raiz.izq = nodoArbol.insertar_nodo(busco.izq, dato, dato2,dato1)
         return raiz
     
     def arbolvacio(raiz):
@@ -170,11 +182,11 @@ arbol = nodoArbol(datos1[0])
 #lista_arbol = sorted(lista_arbol, reverse = True)
 print(lista_arbol)
 h = len(lista_arbol) - 1
-while len(lista_arbol) > 1:
-    busco = arbol.buscar(lista_arbol[h])
-    print(busco.info, busco.der, busco.izq )
-    arbol.insertar_nodo(lista_arbol[h-1], lista_arbol[h - 2], busco )
+while h > 1:
+    #busco = arbol.buscar(lista_arbol[h])
+    #print(busco.info, busco.der, busco.izq )
+    arbol.insertar_nodo(lista_arbol[h],lista_arbol[h-1],lista_arbol[h-2])
     
-    h = h -1
+    h = h - 3
     
 arbol.preorden()
