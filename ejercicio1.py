@@ -45,14 +45,14 @@ class nodoArbol(object):
                     raiz.info = aux.info
         return raiz, x
     
-    def insertar_nodo(raiz, dato):
+    def insertar_nodo(raiz, dato, dato1 = 0):
         '''
         Insertamos el nodo en el árbol
         '''
         
         if raiz is None:
-             raiz = nodoArbol(dato)                        
-        elif dato < raiz.info:
+            raiz = nodoArbol(dato)                        
+        elif dato < dato1:
             raiz.izq = nodoArbol.insertar_nodo(raiz.izq, dato)
         else:
             raiz.der = nodoArbol.insertar_nodo(raiz.der, dato)
@@ -135,30 +135,40 @@ class nodoArbol(object):
 datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
 datos = sorted(datos.items(), key= lambda x: x[1])
 datos1 =[]
-for j in datos:
+'''for j in datos:
     if type(j) == list:
         break
     else:
         a = list(j)
         datos1.append(a)
+    '''
     
-    
-
+for j in datos:
+    datos1.append(j[1])
 print(datos1)
 lista_arbol = []
 for i in range(len(datos1)-1):
     lista = []
     lista1= []
-    suma = datos1[0][1] + datos1[1][1]
-    print(suma, datos1[0][1], datos1[1][1])
-    lista1.append(datos1[0][0])
-    lista1.append(datos1[1][0])
-    lista.append(lista1)
-    lista.append(suma)
-    print(lista)
+    suma = round(datos1[0] + datos1[1], 2)
+    lista_arbol.append(datos1[0])
+    lista_arbol.append(datos1[1])
+    lista_arbol.append(suma)
+    print(lista_arbol)
+    '''lista1.append((datos1[0][0], datos1[0][1]))
+    lista1.append((datos1[1][0], datos1[1][1]))'''
+    #lista.append(lista1)
+    #lista.append(suma)
     datos1.remove(datos1[0])
     datos1.remove(datos1[0])
-    datos1.append(lista)
+    datos1.append(suma)
+    datos1 = sorted(datos1)
     print(datos1)
-    datos1 = sorted(datos1, key = lambda x: x[1])
-    print(datos1)
+arbol = nodoArbol(datos1[0])
+print(arbol.info)
+lista_arbol = sorted(lista_arbol, reverse = True)
+print(lista_arbol)
+for u in range(len(lista_arbol)):
+    arbol.insertar_nodo(lista_arbol[u], lista_arbol[u + 1] )
+    
+arbol.preorden()
