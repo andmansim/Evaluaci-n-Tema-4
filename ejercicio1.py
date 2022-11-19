@@ -14,9 +14,7 @@ T 0.15
 b.         desarrollar las funcionas para comprimir y descomprimir un mensaje.
 '''
 
-datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
-datos1 = sorted(datos.items())
-print(datos1)
+
 from cola import*
 
 class nodoArbol(object):
@@ -134,3 +132,19 @@ class nodoArbol(object):
             nodoArbol.postorden(raiz.izq)
 
 
+datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
+datos1 = sorted(datos.items())
+
+print(datos1[0][1])
+lista_arbol = []
+for i in range(len(datos1)):
+     lista = []
+    suma = datos1[0][1] + datos1[1][1]
+    print(suma)
+    lista.append(suma)
+    lista.append(datos1[0][0])
+    lista.append(datos1[1][0])
+    print(lista)
+    datos1.remove(datos1[0] and datos1[1])
+    datos1.append(lista)
+    print(datos1)
