@@ -133,11 +133,20 @@ class nodoArbol(object):
 
 
 datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
-datos1 = sorted(datos.items(), key= lambda x: x[1])
+datos = sorted(datos.items(), key= lambda x: x[1])
+datos1 =[]
+for j in datos:
+    if type(j) == list:
+        break
+    else:
+        a = list(j)
+        datos1.append(a)
+    
+    
 
 print(datos1)
 lista_arbol = []
-for i in range(len(datos1)):
+for i in range(len(datos1)-1):
     lista = []
     lista1= []
     suma = datos1[0][1] + datos1[1][1]
@@ -150,4 +159,6 @@ for i in range(len(datos1)):
     datos1.remove(datos1[0])
     datos1.remove(datos1[0])
     datos1.append(lista)
+    print(datos1)
+    datos1 = sorted(datos1, key = lambda x: x[1])
     print(datos1)
