@@ -45,17 +45,19 @@ class nodoArbol(object):
                     raiz.info = aux.info
         return raiz, x
     
-    def insertar_nodo(raiz, dato, dato1 = 0):
+    def insertar_nodo(raiz, dato, dato1 = 0, dato_n = 0):
         '''
         Insertamos el nodo en el árbol
         '''
-        
+        raiz = dato_n
         if raiz is None:
             raiz = nodoArbol(dato)                        
         elif dato < dato1:
             raiz.izq = nodoArbol.insertar_nodo(raiz.izq, dato)
+            raiz.der = nodoArbol.insertar_nodo(raiz.der, dato1)
         else:
             raiz.der = nodoArbol.insertar_nodo(raiz.der, dato)
+            raiz.izq = nodoArbol.insertar_nodo(raiz.izq, dato1)
         return raiz
     
     def arbolvacio(raiz):
@@ -165,10 +167,14 @@ for i in range(len(datos1)-1):
     datos1 = sorted(datos1)
     print(datos1)
 arbol = nodoArbol(datos1[0])
-print(arbol.info)
-lista_arbol = sorted(lista_arbol, reverse = True)
+#lista_arbol = sorted(lista_arbol, reverse = True)
 print(lista_arbol)
-for u in range(len(lista_arbol)):
-    arbol.insertar_nodo(lista_arbol[u], lista_arbol[u + 1] )
+h = len(lista_arbol) - 1
+while len(lista_arbol) > 1:
+    busco = arbol.buscar(lista_arbol[h])
+    print(busco.info, busco.der, busco.izq )
+    arbol.insertar_nodo(lista_arbol[h-1], lista_arbol[h - 2], busco )
+    
+    h = h -1
     
 arbol.preorden()
