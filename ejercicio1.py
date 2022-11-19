@@ -13,6 +13,8 @@ T 0.15
 
 b.         desarrollar las funcionas para comprimir y descomprimir un mensaje.
 '''
+from cola import*
+
 class nodoArbol(object):
     def __init__(self, info):
         self.izq= None
@@ -76,7 +78,7 @@ class nodoArbol(object):
         Realiza el barrido postorden del árbol
         '''
         pendientes = Cola()
-        arribo(pendientes, raiz)
+        Cola.arribo(pendientes, raiz)
         while not cola_vacia(pendientes):
             nodo = atencion(pendientes)
             print(nodo.info)
