@@ -232,5 +232,10 @@ print(or_id[:3])
 or_nom=[]
 arbol.inorden(or_nom)
 print('\n')
-print('Lista ordenada por id:')
+print('Lista ordenada por nombre:')
 print(or_nom[:3])
+
+print('\n')
+a = [arbol.por_nivel()]
+print('Lista2 ordenada por nombre:')
+print(a[:3]) #Mirar
