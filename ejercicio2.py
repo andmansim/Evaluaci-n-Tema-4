@@ -105,7 +105,7 @@ class nodoArbol(object):
                 pos = nodoArbol.buscar(raiz.der, clave, param)
         return pos
     
-    def buscar1(raiz, clave, param):
+    '''def buscar1(raiz, clave, param):
       
         pos = None
         if raiz is not None:
@@ -116,7 +116,7 @@ class nodoArbol(object):
             else:
                 pos = nodoArbol.buscar1(raiz.der, clave, param)
         
-        return pos
+        return pos'''
         
     def inorden(raiz):
         '''
@@ -143,8 +143,8 @@ class nodoArbol(object):
         if raiz is not None:
             if letra in raiz.info[param].lower():
                 lista.append(raiz.info[param])    
-            nodoArbol.preorden1(raiz.izq, lista, letra)
-            nodoArbol.preorden1(raiz.der, lista,letra)
+            nodoArbol.preorden1(raiz.izq, lista, letra, param)
+            nodoArbol.preorden1(raiz.der, lista,letra, param)
     
     def postorden(raiz):
         '''
@@ -160,9 +160,7 @@ def crear_arbol(arboles, n, parametro, pokemon):
         arboles.insertar_nodo(pokemon[i], parametro)
         
 
-a = 'Bul a'
-if 'bul' in a.lower():
-    print(a.lower())
+
 #main     
 pok1 = inicio_csv()
 #Árbol por nombre
