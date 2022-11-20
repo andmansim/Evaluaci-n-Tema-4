@@ -164,6 +164,16 @@ class nodoArbol(object):
             nodoArbol.postorden(raiz.der)
             print(raiz.info)
             nodoArbol.postorden(raiz.izq)
+            
+    def postorden1(raiz, lista, tipo, param, param1):
+        '''
+        Ver pokemon débiles a un tipo
+        '''
+        if raiz is not None:
+            nodoArbol.postorden1(raiz.der, lista, tipo, param, param1)
+            if tipo >= raiz.info[param]:
+                lista.append(raiz.info[param1])
+            nodoArbol.postorden1(raiz.izq, lista, tipo, param, param1)
 
 def crear_arbol(arboles, n, parametro, pokemon):
     for i in range(1, n):
@@ -239,3 +249,23 @@ print('\n')
 a = [arbol.por_nivel()]
 print('Lista2 ordenada por nombre:')
 print(a[:3]) #Mirar
+
+#Jolteo(electrico), Lycanroc(roca) y Tyrantrum(roca, dragon)
+
+elec = []
+arbol2.postorden1(elec, 0.5, 'against_electric', 'nombre')
+print('\n')
+print('Lista de pokemons débiles contra el electro')
+print(elec)
+
+roca = []
+arbol2.postorden1(roca, 0.5, 'against_rock', 'nombre')
+print('\n')
+print('Lista de pokemons débiles contra la roca')
+print(roca)
+
+drag = []
+arbol2.postorden1(drag, 0.5, 'against_dragon', 'nombre')
+print('\n')
+print('Lista de pokemons débiles contra el tipo dragón')
+print(drag)
