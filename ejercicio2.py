@@ -118,14 +118,14 @@ class nodoArbol(object):
         
         return pos'''
         
-    def inorden(raiz):
+    def inorden(raiz, lista):
         '''
         Hace el barrido inorden del árbol
         '''
         if raiz is not None:
-            nodoArbol.inorden(raiz.izq)
-            print(raiz.info)
-            nodoArbol.inorden(raiz.der)
+            nodoArbol.inorden(raiz.izq, lista)
+            lista.append(raiz.info)
+            nodoArbol.inorden(raiz.der, lista)
 
     def preorden(raiz):
         '''
@@ -220,3 +220,17 @@ arbol2.preorden2(nom_electro, 'electric', 'tipo1', 'nombre')
 print('\n')
 print('Pokemons tipo eléctrico:')
 print(nom_electro)
+
+#Lista ordenada por id
+or_id=[]
+arbol1.inorden(or_id)
+print('\n')
+print('Lista ordenada por id:')
+print(or_id[:3])
+
+#lista ordenada por nombre
+or_nom=[]
+arbol.inorden(or_nom)
+print('\n')
+print('Lista ordenada por id:')
+print(or_nom[:3])
