@@ -104,7 +104,22 @@ class nodoArbol(object):
             else:
                 pos = nodoArbol.buscar(raiz.der, clave, param)
         return pos
-                
+    
+    def buscar1(raiz, clave, param, lista):
+        
+        print(lista)
+        for i in range(2):
+            pos = None
+            if raiz is not None:
+                if clave in raiz.info[param].lower():
+                    pos = raiz
+                elif clave < raiz.info[param].lower():
+                    pos = nodoArbol.buscar1(raiz.izq, clave, param, lista)
+                else:
+                    pos = nodoArbol.buscar1(raiz.der, clave, param, lista)
+            lista.append(pos.info)
+        return lista
+           
     def inorden(raiz):
         '''
         Hace el barrido inorden del árbol
@@ -136,7 +151,10 @@ def crear_arbol(arboles, n, parametro, pokemon):
     for i in range(1, n):
         arboles.insertar_nodo(pokemon[i], parametro)
         
-   
+
+a = 'Bul a'
+if 'bul' in a.lower():
+    print(a.lower())
 #main     
 pok1 = inicio_csv()
 #Árbol por nombre
@@ -148,8 +166,10 @@ crear_arbol(arbol1, 890, 'id_p', pok1)
 #Árbol por tipo1
 arbol2 = nodoArbol(pok1[0])
 crear_arbol(arbol2, 890, 'tipo1', pok1)
-'''arbol.preorden()
-arbol1.preorden()
-arbol2.preorden()'''
+
+#busco por id_p
 busco = arbol1.buscar(7, 'id_p')
 print(busco.info)
+#busco por nombre
+busco1 = arbol.buscar1('iv', 'nombre', [])
+print(busco1.info)
