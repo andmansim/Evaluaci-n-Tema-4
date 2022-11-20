@@ -1,30 +1,20 @@
 import os
 import platform 
-import csv
 
+import pandas as pd
 def limpiar_pantalla():
     os.system('cls') if platform.system() == "Windows" else os.system('clear')
-def leer():
-    '''
-    Leemos el csv y lo almacenamos en una lista de diccionarios
-    '''
-    lista = []
-    with open('pokedex.csv', newline="\n") as fichero:
-            reader = csv.DictReader(fichero, delimiter=",") #lo pasa a diccionario
-            for linea in reader:
-                lista.append(linea) 
-    
-    return lista
-lista = leer()
+
+
 def inicio_csv():
-    
+    pok = pd.read_csv('pokedex.csv')
     lista1 = []
-    for i in lista:
+    for i in pok.iloc:
         dicc= {}
         dicc['id_p'] = i['pokedex_number']
         dicc['nombre'] = i['name']
         dicc['tipo1'] = i['type_1']
-        dicc['tipo2'] = i['type2']
+        dicc['tipo2'] = i['type_2']
         dicc['against_fire'] = i['against_fire']
         dicc['against_water'] = i['against_water']
         dicc['against_electric'] = i['against_electric']
