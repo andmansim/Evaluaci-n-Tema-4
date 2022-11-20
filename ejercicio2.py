@@ -201,3 +201,20 @@ nom_agua= []
 arbol2.preorden2(nom_agua, 'water', 'tipo1', 'nombre')
 print('\n')
 print(nom_agua)
+
+nom_fuego=[]
+arbol2.preorden2(nom_agua, 'fire', 'tipo1', 'nombre')
+print('\n')
+print(nom_fuego)
+
+nom_planta=[]
+arbol2.preorden2(nom_agua, 'grass', 'tipo1', 'nombre')
+print('\n')
+
+print(nom_planta)
+
+nom_electro=[]
+arbol2.preorden2(nom_agua, 'water', 'tipo1', 'nombre')
+print('\n')
+print('Pokemons tipo eléctrico:')
+print(nom_electro)
