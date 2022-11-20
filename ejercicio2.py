@@ -105,21 +105,19 @@ class nodoArbol(object):
                 pos = nodoArbol.buscar(raiz.der, clave, param)
         return pos
     
-    def buscar1(raiz, clave, param, lista):
+    def buscar1(raiz, clave, param):
+      
+        pos = None
+        if raiz is not None:
+            if clave in raiz.info[param].lower():
+                pos = raiz
+            elif clave < raiz.info[param].lower():
+                pos = nodoArbol.buscar1(raiz.izq, clave, param)
+            else:
+                pos = nodoArbol.buscar1(raiz.der, clave, param)
         
-        print(lista)
-        for i in range(2):
-            pos = None
-            if raiz is not None:
-                if clave in raiz.info[param].lower():
-                    pos = raiz
-                elif clave < raiz.info[param].lower():
-                    pos = nodoArbol.buscar1(raiz.izq, clave, param, lista)
-                else:
-                    pos = nodoArbol.buscar1(raiz.der, clave, param, lista)
-            lista.append(pos.info)
-        return lista
-           
+        return pos
+        
     def inorden(raiz):
         '''
         Hace el barrido inorden del árbol
@@ -138,6 +136,16 @@ class nodoArbol(object):
             nodoArbol.preorden(raiz.izq)
             nodoArbol.preorden(raiz.der)
 
+    def preorden1(raiz, lista, letra, param):
+        '''
+        Realiza el barrido preorden del árbol
+        '''
+        if raiz is not None:
+            if letra in raiz.info[param].lower():
+                lista.append(raiz.info[param])    
+            nodoArbol.preorden1(raiz.izq, lista, letra)
+            nodoArbol.preorden1(raiz.der, lista,letra)
+    
     def postorden(raiz):
         '''
         Realiza el barrido postorden del árbol
@@ -168,8 +176,12 @@ arbol2 = nodoArbol(pok1[0])
 crear_arbol(arbol2, 890, 'tipo1', pok1)
 
 #busco por id_p
-busco = arbol1.buscar(7, 'id_p')
+print('Buscamos datos:')
+num = int(input('Introduce id del pokemon a buscar:'))
+busco = arbol1.buscar(num, 'id_p')
 print(busco.info)
 #busco por nombre
-busco1 = arbol.buscar1('iv', 'nombre', [])
-print(busco1.info)
+lista = []
+let = input('Introduce el nombre del pokemon a buscar: ')
+pre = arbol.preorden1(lista, let, 'nombre')
+print(lista)
