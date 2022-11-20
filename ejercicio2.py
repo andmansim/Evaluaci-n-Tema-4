@@ -53,7 +53,7 @@ class nodoArbol(object):
         '''
         if raiz is None:
             raiz = nodoArbol(dato)                        
-        elif dato['id_p'] < raiz.info['id_p']:
+        elif dato['nombre'] < raiz.info['nombre']:
             raiz.izq = nodoArbol.insertar_nodo(raiz.izq, dato)
         else:
             raiz.der = nodoArbol.insertar_nodo(raiz.der, dato)
@@ -131,15 +131,20 @@ class nodoArbol(object):
             nodoArbol.postorden(raiz.der)
             print(raiz.info)
             nodoArbol.postorden(raiz.izq)
-            
-pok1 = inicio_csv()
-print(pok1[:3])
+def crear_arbol(arboles, n1, n2, pokemon):
+    for i in range(n1, n2):
+        arboles.insertar_nodo(pokemon[i])   
 
-print(len(pok1))
+for i in range(1, 10):
+    print(i)     
+#main     
+pok1 = inicio_csv()
 arbol = nodoArbol(pok1[0])
 arbol1 = nodoArbol(pok1[300])
 arbol2 = nodoArbol(pok1[600])
-for i in range(299):
-    arbol.insertar_nodo(pok1[i])
-
-
+crear_arbol(arbol, 1, 300, pok1)
+crear_arbol(arbol1, 300, 600, pok1)
+crear_arbol(arbol2, 600, 890, pok1)
+arbol.preorden()
+arbol1.preorden()
+arbol2.preorden()
