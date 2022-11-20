@@ -200,21 +200,23 @@ print(lista)
 nom_agua= []
 arbol2.preorden2(nom_agua, 'water', 'tipo1', 'nombre')
 print('\n')
+print('Pokemons tipo agua:')
 print(nom_agua)
 
 nom_fuego=[]
-arbol2.preorden2(nom_agua, 'fire', 'tipo1', 'nombre')
+arbol2.preorden2(nom_fuego, 'fire', 'tipo1', 'nombre')
 print('\n')
+print('Pokemons tipo fuego:')
 print(nom_fuego)
 
 nom_planta=[]
-arbol2.preorden2(nom_agua, 'grass', 'tipo1', 'nombre')
+arbol2.preorden2(nom_planta, 'grass', 'tipo1', 'nombre')
 print('\n')
-
+print('Pokemons tipo planta:')
 print(nom_planta)
 
 nom_electro=[]
-arbol2.preorden2(nom_agua, 'water', 'tipo1', 'nombre')
+arbol2.preorden2(nom_electro, 'electric', 'tipo1', 'nombre')
 print('\n')
 print('Pokemons tipo eléctrico:')
 print(nom_electro)
