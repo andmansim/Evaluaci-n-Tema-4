@@ -91,18 +91,18 @@ class nodoArbol(object):
             if nodo.der is not None:
                 Cola.arribo(pendientes, nodo.der)
 
-    def buscar(raiz, clave):
+    def buscar(raiz, clave, param):
         '''
         Devuelve la dirección del nodo buscado
         '''
         pos = None
         if raiz is not None:
-            if raiz.info == clave:
+            if raiz.info[param] == clave:
                 pos = raiz
-            elif clave < raiz.info:
-                pos = nodoArbol.buscar(raiz.izq, clave)
+            elif clave < raiz.info[param]:
+                pos = nodoArbol.buscar(raiz.izq, clave, param)
             else:
-                pos = nodoArbol.buscar(raiz.der, clave)
+                pos = nodoArbol.buscar(raiz.der, clave, param)
         return pos
                 
     def inorden(raiz):
@@ -139,12 +139,17 @@ def crear_arbol(arboles, n, parametro, pokemon):
    
 #main     
 pok1 = inicio_csv()
+#Árbol por nombre
 arbol = nodoArbol(pok1[0])
-arbol1 = nodoArbol(pok1[0])
-arbol2 = nodoArbol(pok1[0])
 crear_arbol(arbol, 890, 'nombre', pok1)
+#Árbol por id
+arbol1 = nodoArbol(pok1[0])
 crear_arbol(arbol1, 890, 'id_p', pok1)
+#Árbol por tipo1
+arbol2 = nodoArbol(pok1[0])
 crear_arbol(arbol2, 890, 'tipo1', pok1)
-arbol.preorden()
+'''arbol.preorden()
 arbol1.preorden()
-arbol2.preorden()
+arbol2.preorden()'''
+busco = arbol1.buscar(7, 'id_p')
+print(busco.info)
