@@ -138,13 +138,23 @@ class nodoArbol(object):
 
     def preorden1(raiz, lista, letra, param):
         '''
-        Realiza el barrido preorden del árbol
+        Para buscar por nombres
         '''
         if raiz is not None:
             if letra in raiz.info[param].lower():
                 lista.append(raiz.info[param])    
             nodoArbol.preorden1(raiz.izq, lista, letra, param)
             nodoArbol.preorden1(raiz.der, lista,letra, param)
+    
+    def preorden2(raiz, lista, tipo, param, param1):
+        '''
+        Para buscar el nombre según el tipo
+        '''
+        if raiz is not None:
+            if tipo == raiz.info[param].lower():
+                lista.append(raiz.info[param1])    
+            nodoArbol.preorden2(raiz.izq, lista, tipo, param, param1)
+            nodoArbol.preorden2(raiz.der, lista,tipo, param, param1)
     
     def postorden(raiz):
         '''
@@ -181,5 +191,13 @@ print(busco.info)
 #busco por nombre
 lista = []
 let = input('Introduce el nombre del pokemon a buscar: ')
-pre = arbol.preorden1(lista, let, 'nombre')
+arbol.preorden1(lista, let, 'nombre')
+if lista == []:
+    print('No se ha encontrado ningún resultado')
 print(lista)
+
+#nombres pokemon de tipo agua, fuego, planta y eléctrico
+nom_agua= []
+arbol2.preorden2(nom_agua, 'water', 'tipo1', 'nombre')
+print('\n')
+print(nom_agua)
