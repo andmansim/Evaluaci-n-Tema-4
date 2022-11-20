@@ -8,6 +8,7 @@ def limpiar_pantalla():
 
 def inicio_csv():
     pok = pd.read_csv('pokedex.csv')
+    pok = pok.drop(range(890,1045), axis= 0)
     lista1 = []
     for i in pok.iloc:
         dicc= {}
