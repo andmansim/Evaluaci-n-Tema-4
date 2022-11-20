@@ -15,3 +15,6 @@ por nombre;
 e.         mostrar todos los Pokémons que son débiles frente a Jolteon, Lycanroc y Tyrantrum;
 f.         mostrar todos los tipos de Pokémons y cuántos hay de cada tipo.
 '''
+from helper import *
+pok1 = inicio_csv()
+print(pok1.columns)
