@@ -133,7 +133,5 @@ class nodoArbol(object):
             nodoArbol.postorden(raiz.izq)
             
 pok1 = inicio_csv()
-print(pok1.columns)
+print(pok1)
 
-for i in pok1:
-    
