@@ -15,9 +15,9 @@ def leer():
                 lista.append(linea) 
     
     return lista
-
+lista = leer()
 def inicio_csv():
-    lista = leer()
+    
     lista1 = []
     for i in lista:
         dicc= {}
