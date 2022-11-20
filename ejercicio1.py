@@ -21,7 +21,7 @@ class nodoArbol(object):
     def __init__(self, info):
         self.izq= None
         self.der = None
-        self.info = info # le pasamos la información inicial del árbol, ¿raíz?
+        self.info = info 
         
     def eliminar_nodo(raiz, clave):
         '''
