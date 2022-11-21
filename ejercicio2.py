@@ -189,7 +189,14 @@ def crear_arbol(arboles, n, parametro, pokemon):
     for i in range(1, n):
         arboles.insertar_nodo(pokemon[i], parametro)
         
-
+def contar(lista, lista1):
+    listas=[]
+    for i in range(len(lista1)):
+        
+        a =lista.count(lista1[i])
+        listas.append(lista1[i])
+        listas.append(a)
+    return listas
 
 #main     
 pok1 = inicio_csv()
@@ -261,7 +268,6 @@ print('Lista2 ordenada por nombre:')
 print(a[:3]) #Mirar
 
 #Jolteo(electrico), Lycanroc(roca) y Tyrantrum(roca, dragon)
-
 elec = []
 arbol2.postorden1(elec, 0.5, 'against_electric', 'nombre')
 print('\n')
@@ -282,8 +288,11 @@ print(drag)
 
 #Lista de tipo de pokemons únicos
 l= []
-arbol2.inorden(l)
+arbol2.inorden1(l)
 l_unic=[]
 for i in set(l):
     l_unic.append(i)
-print(l_unic)
+print('\n')
+print('Tipos pokemon:')
+l_rep=contar(l, l_unic)
+print(l_rep)
