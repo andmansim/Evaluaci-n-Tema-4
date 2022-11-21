@@ -126,6 +126,16 @@ class nodoArbol(object):
             nodoArbol.inorden(raiz.izq, lista)
             lista.append(raiz.info)
             nodoArbol.inorden(raiz.der, lista)
+    
+    def inorden1(raiz, lista):
+        '''
+        Hace el barrido inorden del árbol
+        '''
+        if raiz is not None:
+            nodoArbol.inorden1(raiz.izq, lista)
+            lista.append(raiz.info['tipo1'])
+            nodoArbol.inorden1(raiz.der, lista)
+
 
     def preorden(raiz):
         '''
@@ -269,3 +279,11 @@ arbol2.postorden1(drag, 0.5, 'against_dragon', 'nombre')
 print('\n')
 print('Lista de pokemons débiles contra el tipo dragón')
 print(drag)
+
+#Lista de tipo de pokemons únicos
+l= []
+arbol2.inorden(l)
+l_unic=[]
+for i in set(l):
+    l_unic.append(i)
+print(l_unic)
