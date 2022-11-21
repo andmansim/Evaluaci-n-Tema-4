@@ -9,7 +9,7 @@ d.         determinar si existen países que dispongan de maravillas arquitectó
 e.         determinar si algún país tiene más de una maravilla del mismo tipo;
 f.         deberá utilizar un grafo no dirigido.
 '''
-
+from cola import *
 class nodoArista(object):
     '''Clase nodo vértice'''
     def __init__(self, info, destino):
@@ -222,4 +222,50 @@ class Arista(object):
             aux= aux.sig 
         return resultado
     
+    def marcar_no_visitado(grafo):
+        '''
+        Marca todos los vértices del grafo como no visitados
+        '''
+        aux = grafo.inicio
+        while aux is not None:
+            aux.visitado = False
+            aux = aux.sig 
+    
+    def barrido_profundidad(grafo, vertice):
+        '''
+        Barrido en profundidad del grafo
+        '''
+        while vertice is not None:
+            if not vertice.visitado:
+                vertice.visitado = True
+                print(vertice.info)
+                adyacentes = vertice.adyacentes.inicio 
+                while adyacentes is not None:
+                    adyacente = Arista.buscar_vertice(grafo, adyacentes.destino)
+                    if not adyacente.visitado:
+                        Arista.barrido_profundidad(grafo, adyacente)
+                    adyacentes = adyacentes.sig 
+            vertice = vertice.sig 
+            
+    def barrido_amplitud(grafo, vertice):
+        '''
+        Barrido en amplitud del grafo
+        '''
+        cola = Cola()
+        while vertice is not None:
+            if not vertice.visitado:
+                vertice.visitado = True 
+                Cola.arribo(cola, vertice)
+                while not Cola.cola_vacia(cola):
+                    nodo = Cola.atencion(cola)
+                    print(nodo.info)
+                    adyacentes = nodo.adyacentes.inicio
+                    while adyacentes is not None:
+                        adyacente = Arista.buscar_vertice(grafo, adyacentes.destino)
+                        if not adyacente.visitado: 
+                            adyacente.visitado = True 
+                            Cola.arribo(cola, adyacente)
+                        adyacentes = adyacentes.sig
+                        
+            vertice = vertice.sig
     
