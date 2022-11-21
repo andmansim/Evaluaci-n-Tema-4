@@ -75,5 +75,29 @@ class Arista(object):
         grafo.tamanio += 1
     
     def insertar_arista(grafo, dato, origen, destino):
-        
-                
+        '''
+        Inserta una arista desde el vértice origen al destino
+        '''
+        Arista.agregar_arista(origen.adyacentes, dato, destino.info)
+        if not grafo.dirigido:
+            Arista.agregar_arista(destino.adyacentes, dato, origen.info)
+    
+    def agregar_arista(origen, dato, destino):
+        '''
+        Agregar la arista desde el vértice origen al destino
+        '''
+        nodo = nodoArista(dato, destino)   
+        if origen.inicio is None or origen.inicio.destinio > destino:
+            nodo.sig = origen.inicio
+            origen.inicio = nodo
+        else:
+            ant = origen.inicio
+            act = origen.inicio.sig
+            while act is not None and act.destino < nodo.destino:
+                ant = act
+                act = act.sig
+            nodo.sig= act
+            ant.sig = nodo
+        origen.tamanio += 1
+    
+    
