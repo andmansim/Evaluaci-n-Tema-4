@@ -100,4 +100,47 @@ class Arista(object):
             ant.sig = nodo
         origen.tamanio += 1
     
+    def eliminar_vertice(grafo, clave):
+        '''
+        Elimina un vértice del grafo y lo devuelve si lo encuentra
+        '''
+        x = None
+        if grafo.inicio.info == clave:
+            x = grafo.inicio.info
+            grafo.inicio = grafo.inicio.sig
+            grafo.tamanio -= 1
+        else:
+            ant = grafo.inicio
+            act = grafo.inicio.sig
+            while act is not None and act.info != clave :
+                ant = act
+                act = act.sig
+            
+            if act is not None:
+                x = act.sig
+                ant.sig = act.sig 
+                grafo.tamanio -=1
+        if x is not None:
+            aux = grafo.inicio
+            while aux is not None:
+                if aux.adyacentes.inicio is not None:
+                    Arista.eliminar_arista(aux.adyacentes, clave)
+                aux = aux.sig
+        
+        return x
     
+    def buscar_vertice(grafo, buscado):
+        '''
+        Devuelve la dirección del elemento buscado
+        '''
+        aux = grafo.inicio
+        while aux is not None and aux.info != buscado:
+            aux = aux.sig
+        return aux
+
+    
+    def buscar_arista(vertice, buscado):
+        '''
+        Devuelve la dirección del elemento buscado
+        '''
+        
