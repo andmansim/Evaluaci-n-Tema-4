@@ -143,4 +143,83 @@ class Arista(object):
         '''
         Devuelve la dirección del elemento buscado
         '''
+        aux = vertice.adyacentes.inicio
+        while aux is not None and aux.destino != buscado:
+            aux = aux.sig
+        return aux
+    
+    def tamanio(grafo):
+        '''
+        Devuelve el número de vértices en el grafo
+        '''
+        return grafo.tamanio
+    
+    def grafo_vacio(grafo):
+        '''
+        Devuelve True si el grafo está vacío
+        '''
+        return grafo.inicio is None
+    
+    
+    def eliminar_arista(vertice, destino):
+        '''
+        Elimina una arista del vértice y lo devuelve si lo encuentra
+        '''
+        x = None
+        if vertice.inicio.destino == destino:
+            x = vertice.inicio.info
+            vertice.inicio = vertice.inicio.sig
+            vertice.tamanio -= 1
         
+        else:
+            ant = vertice.inicio
+            act = vertice.inicio.sig
+            while act is not None and act.destino != destino:
+                ant = act
+                act = act.sig
+            if act is not None:
+                x = act.info
+                ant.sig = act.sig
+                vertice.tamanio -= 1
+        return x
+    
+    def existe_paso(grafo, origen, destino):
+        '''
+        Barrido en profundidad del grafo
+        '''
+        resultado = False
+        if not origen.visitado:
+            origen.visitado = True
+            vadyacentes = origen.adyacentes.inicio
+            while vadyacentes is not None and not resultado:
+                adyacente = Arista.buscar_vertice(grafo, vadyacentes.destino)
+                if adyacente.info == destino.info:
+                    return True
+                elif not adyacente.visitado:
+                    resultado = Arista.existe_paso(grafo, adyacente, destino)
+                vadyacentes = vadyacentes.sig
+                
+        return resultado
+    
+    def adyacentes(vertice):
+        '''
+        Muestra los adyacentes del vértice
+        '''
+        aux = vertice.adyacentes.inicio
+        while aux is not None:
+            print(aux.destino, aux.info)
+            aux = aux.sig 
+    
+    def es_adyacente(vertice, destino):
+        '''
+        Determina si el destino es adyacente directo
+        '''
+        resultado = False
+        aux = vertice.adyacentes.inicio 
+        while aux is not None and not resultado:
+            if aux.destino == resultado:
+                resultado = True
+            aux= aux.sig 
+        return resultado
+    
+    
