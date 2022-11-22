@@ -159,13 +159,14 @@ class nodoArbol(object):
 
 
 datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
-datos = sorted(datos.items(), key= lambda x: x[1])
+datos0 = sorted(datos.items(), key= lambda x: x[1])
 datos1 =[]
 
     
-for j in datos:
+for j in datos0:
     datos1.append(j[1])
 print(datos1)
+d = datos1.copy()
 lista_arbol = []
 for i in range(len(datos1)-1):
     lista = []
@@ -194,11 +195,10 @@ while h > 1:
     arbol.insertar_nodo(lista_arbol[h],lista_arbol[h-1],lista_arbol[h-2])
     
     h = h - 3
-
+pre = []
+arbol.preorden1(pre)
 l =[]    
 arbol.por_nivel(l)
-
-print(l)
 cero_uno = []
 for i in range(len(l)):
     if  i % 2 == 0:
@@ -206,10 +206,15 @@ for i in range(len(l)):
     elif i% 2 != 0:
         cero_uno.append(0)
 
-print(cero_uno)
 dicc= dict(zip(l, cero_uno))
 del(dicc[l[0]])
+print(pre)
 print(dicc)
+c =list(reversed(d))
+print(c)
+
 dic={}
-for key, values in datos.items():
-    if values in 
+for i in dicc:
+    a = [i, i+1]
+    del (i)
+    print(dicc)
