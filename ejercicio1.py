@@ -64,7 +64,7 @@ class nodoArbol(object):
         else:
             if raiz.info == 1.0 :
                 busco = raiz
-                raiz.der = nodoArbol.insertar_nodo(busco.der, dato, dato1, ato2)
+                raiz.der = nodoArbol.insertar_nodo(busco.der, dato, dato1, dato2)
                 raiz.izq = nodoArbol.insertar_nodo(busco.izq, dato, dato2,dato1)
             else:
                 busco = arbol.buscar(dato)
@@ -112,11 +112,13 @@ class nodoArbol(object):
         if raiz is not None:
             if raiz.info == clave:
                 pos = raiz
-            elif clave < raiz.info:
-                pos = nodoArbol.buscar(raiz.izq, clave)
             else:
-                pos = nodoArbol.buscar(raiz.der, clave)
-        return pos
+                if raiz.izq is not None and raiz.der is not None:
+                    pos = nodoArbol.buscar(raiz.izq, clave)
+                    if pos is None:
+                        pos = nodoArbol.buscar(raiz.der, clave)
+       
+            return pos
                 
     def inorden(raiz):
         '''
@@ -149,13 +151,7 @@ class nodoArbol(object):
 datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
 datos = sorted(datos.items(), key= lambda x: x[1])
 datos1 =[]
-'''for j in datos:
-    if type(j) == list:
-        break
-    else:
-        a = list(j)
-        datos1.append(a)
-    '''
+
     
 for j in datos:
     datos1.append(j[1])
