@@ -179,37 +179,39 @@ class nodoArbol(object):
                 
             
 datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
+#ordenamos en función de los valores
 datos0 = sorted(datos.items(), key= lambda x: x[1])
 datos1 =[]
-
-    
+#los pasamos a lista
 for j in datos0:
     datos1.append(j[1])
-print(datos1)
+
 d = datos1.copy()
+#Creamos los elementos del árbol
 lista_arbol = []
-for i in range(len(datos1)-1):
+def suma_elem(datos):
     lista = []
-    lista1= []
-    suma = round(datos1[0] + datos1[1], 2)
-    lista_arbol.append(datos1[0])
-    lista_arbol.append(datos1[1])
-    lista_arbol.append(suma)
-    datos1.remove(datos1[0])
-    datos1.remove(datos1[0])
-    datos1.append(suma)
-    datos1 = sorted(datos1)
+    for i in range(len(datos)-1):
+        suma = round(datos[0] + datos[1], 2)
+        lista.append(datos[0])
+        lista.append(datos[1])
+        lista.append(suma)
+        datos.remove(datos[0])
+        datos.remove(datos[0])
+        datos.append(suma)
+        datos = sorted(datos)
+    return lista
+lista_arbol = suma_elem(lista_arbol, datos1)
+
+#Creo raiz
 arbol = nodoArbol(datos1[0])
-#lista_arbol = sorted(lista_arbol, reverse = True)
-print(lista_arbol)
+#Añado elementos al árbol
 h = len(lista_arbol) - 1
 while h > 1:
-    
     arbol.insertar_nodo(lista_arbol[h],lista_arbol[h-1],lista_arbol[h-2])
-    
     h = h - 3
 
-
+#Asociamos 0, 1
 print(d)
 
 dic = {}
