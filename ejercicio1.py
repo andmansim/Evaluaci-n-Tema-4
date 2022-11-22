@@ -157,7 +157,27 @@ class nodoArbol(object):
             print(raiz.info)
             nodoArbol.postorden(raiz.izq)
 
-
+    def recorrer_ar(raiz, dato, lista, encontrado):
+        
+        if raiz is not None:
+            if raiz.der == None and raiz.izq == None: #Estoy en una hoja
+                if raiz.info == dato:
+                    encontrado = True
+            else:
+                if encontrado != True:
+                    lista.append(0)
+                    encontrado = nodoArbol.recorrer_ar(raiz.izq, dato, lista, encontrado)
+                    if encontrado != True:
+                        lista.pop()
+                if encontrado!= True:
+                    lista.append(1)
+                    encontrado = nodoArbol.recorrer_ar(raiz.der, dato, lista, encontrado)
+                    if encontrado != True:
+                        lista.pop()
+                    
+        return encontrado
+                
+            
 datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
 datos0 = sorted(datos.items(), key= lambda x: x[1])
 datos1 =[]
@@ -175,46 +195,26 @@ for i in range(len(datos1)-1):
     lista_arbol.append(datos1[0])
     lista_arbol.append(datos1[1])
     lista_arbol.append(suma)
-    print(lista_arbol)
-    '''lista1.append((datos1[0][0], datos1[0][1]))
-    lista1.append((datos1[1][0], datos1[1][1]))'''
-    #lista.append(lista1)
-    #lista.append(suma)
     datos1.remove(datos1[0])
     datos1.remove(datos1[0])
     datos1.append(suma)
     datos1 = sorted(datos1)
-    print(datos1)
 arbol = nodoArbol(datos1[0])
 #lista_arbol = sorted(lista_arbol, reverse = True)
 print(lista_arbol)
 h = len(lista_arbol) - 1
 while h > 1:
-    #busco = arbol.buscar(lista_arbol[h])
-    #print(busco.info, busco.der, busco.izq )
+    
     arbol.insertar_nodo(lista_arbol[h],lista_arbol[h-1],lista_arbol[h-2])
     
     h = h - 3
-pre = []
-arbol.preorden1(pre)
-l =[]    
-arbol.por_nivel(l)
-cero_uno = []
-for i in range(len(l)):
-    if  i % 2 == 0:
-        cero_uno.append(1)
-    elif i% 2 != 0:
-        cero_uno.append(0)
 
-dicc= dict(zip(l, cero_uno))
-del(dicc[l[0]])
-print(pre)
-print(dicc)
-c =list(reversed(d))
-print(c)
 
-dic={}
-for i in dicc:
-    a = [i, i+1]
-    del (i)
-    print(dicc)
+print(d)
+
+dic = {}
+for i in d:
+    cero_uno = []
+    arbol.recorrer_ar(i, cero_uno, False)
+    dic[i] = cero_uno
+print(dic)
