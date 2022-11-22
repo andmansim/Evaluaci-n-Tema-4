@@ -59,8 +59,8 @@ class nodoArbol(object):
                 raiz.izq = nodoArbol.insertar_nodo(busco.izq, dato, dato2,dato1)
             else:    
                 busco = arbol.buscar(dato)
-                raiz.izq = nodoArbol.insertar_nodo(busco.izq, dato, dato2,dato1)
-                raiz.der = nodoArbol.insertar_nodo(busco.der, dato, dato1,dato2)
+                busco.izq = nodoArbol.insertar_nodo(busco.izq, dato, dato2,dato1)
+                busco.der = nodoArbol.insertar_nodo(busco.der, dato, dato1,dato2)
         else:
             if raiz.info == 1.0 :
                 busco = raiz
@@ -90,7 +90,7 @@ class nodoArbol(object):
             raiz.der, aux = nodoArbol.remplazar(raiz.der)
         return raiz, aux
     
-    def por_nivel(raiz):
+    def por_nivel(raiz, lista):
         '''
         Realiza el barrido postorden del árbol
         '''
@@ -98,7 +98,7 @@ class nodoArbol(object):
         Cola.arribo(pendientes, raiz)
         while not Cola.cola_vacia(pendientes):
             nodo = Cola.atencion(pendientes)
-            print(nodo.info)
+            lista.append(nodo.info)
             if nodo.izq is not None:
                 Cola.arribo(pendientes, nodo.izq)
             if nodo.der is not None:
@@ -119,7 +119,8 @@ class nodoArbol(object):
                         pos = nodoArbol.buscar(raiz.der, clave)
        
             return pos
-                
+    
+
     def inorden(raiz):
         '''
         Hace el barrido inorden del árbol
@@ -137,6 +138,15 @@ class nodoArbol(object):
             print(raiz.info)    
             nodoArbol.preorden(raiz.izq)
             nodoArbol.preorden(raiz.der)
+    
+    def preorden1(raiz, lista):
+        '''
+        Realiza el barrido preorden del árbol
+        '''
+        if raiz is not None:
+            lista.append(raiz.info)    
+            nodoArbol.preorden1(raiz.izq, lista)
+            nodoArbol.preorden1(raiz.der, lista)
     
     def postorden(raiz):
         '''
@@ -184,5 +194,22 @@ while h > 1:
     arbol.insertar_nodo(lista_arbol[h],lista_arbol[h-1],lista_arbol[h-2])
     
     h = h - 3
-    
-arbol.preorden()
+
+l =[]    
+arbol.por_nivel(l)
+
+print(l)
+cero_uno = []
+for i in range(len(l)):
+    if  i % 2 == 0:
+        cero_uno.append(1)
+    elif i% 2 != 0:
+        cero_uno.append(0)
+
+print(cero_uno)
+dicc= dict(zip(l, cero_uno))
+del(dicc[l[0]])
+print(dicc)
+dic={}
+for key, values in datos.items():
+    if values in 
