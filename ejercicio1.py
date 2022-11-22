@@ -177,7 +177,18 @@ class nodoArbol(object):
                     
         return encontrado
                 
-            
+def sumar_elem(lista, datos):
+    for i in range(len(datos)-1):
+        
+        suma = round(datos[0] + datos[1], 2)
+        lista.append(datos[0])
+        lista.append(datos[1])
+        lista.append(suma)
+        datos.remove(datos[0])
+        datos.remove(datos[0])
+        datos.append(suma)
+        datos = sorted(datos)
+        
 datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
 #ordenamos en función de los valores
 datos0 = sorted(datos.items(), key= lambda x: x[1])
@@ -189,22 +200,11 @@ for j in datos0:
 d = datos1.copy()
 #Creamos los elementos del árbol
 lista_arbol = []
-def suma_elem(datos):
-    lista = []
-    for i in range(len(datos)-1):
-        suma = round(datos[0] + datos[1], 2)
-        lista.append(datos[0])
-        lista.append(datos[1])
-        lista.append(suma)
-        datos.remove(datos[0])
-        datos.remove(datos[0])
-        datos.append(suma)
-        datos = sorted(datos)
-    return lista
-lista_arbol = suma_elem(lista_arbol, datos1)
+
+sumar_elem(lista_arbol, datos1)
 
 #Creo raiz
-arbol = nodoArbol(datos1[0])
+arbol = nodoArbol(lista_arbol[len(lista_arbol)-1])
 #Añado elementos al árbol
 h = len(lista_arbol) - 1
 while h > 1:
