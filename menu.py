@@ -11,7 +11,7 @@ def iniciar():
         print(" BIENVENIDO AL Manager ")
         print("========================")
         print("[1] Ejercicio1: Árbol de Huffman")
-        print("[2] ")
+        print("[2] Ejercicio2: Pokemons")
         print("[3]  ")
         print("[4]  ")
         print("[5]  ")
@@ -69,16 +69,16 @@ def iniciar():
                             
         if opcion == '2':
             print("Información de los pokemons...\n")
-            pok1 = inicio_csv()
+            pok1 = helpers.inicio_csv()
             #Árbol por nombre
             arbol = nodoArbol(pok1[0])
-            crear_arbol(arbol, 890, 'nombre', pok1)
+            e2.crear_arbol(arbol, 890, 'nombre', pok1)
             #Árbol por id
             arbol1 = nodoArbol(pok1[0])
-            crear_arbol(arbol1, 890, 'id_p', pok1)
+            e2.crear_arbol(arbol1, 890, 'id_p', pok1)
             #Árbol por tipo1
             arbol2 = nodoArbol(pok1[0])
-            crear_arbol(arbol2, 890, 'tipo1', pok1)
+            e2.crear_arbol(arbol2, 890, 'tipo1', pok1)
 
             #busco por id_p
             print('-----------Buscamos datos:------------------')
@@ -169,7 +169,7 @@ def iniciar():
                 l_unic.append(i)
             print('\n')
             print('Tipos pokemon:')
-            l_rep=contar(l, l_unic)
+            l_rep= e2.contar(l, l_unic)
             print(l_rep)
             
         
