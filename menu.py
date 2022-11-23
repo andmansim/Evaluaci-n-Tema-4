@@ -1,5 +1,5 @@
 import helper as helpers
-from ejercicio1 import *
+import ejercicio1 as e1
 import ejercicio2 as e2
 import ejercicio3 as e3
 
@@ -34,10 +34,10 @@ def iniciar():
             datos2 = datos1.copy()#Hacemos copia pq luego eliminamos para añadir
             #Creamos los elementos del árbol
             lista_arbol = []
-            sumar_elem(lista_arbol, datos1)
+            e1.sumar_elem(lista_arbol, datos1)
 
             #Creo raiz
-            arbol = nodoArbol(lista_arbol[len(lista_arbol)-1])
+            arbol = e1.nodoArbol(lista_arbol[len(lista_arbol)-1])
             #Añado elementos al árbol
             h = len(lista_arbol) - 1
             while h > 1:
@@ -59,25 +59,25 @@ def iniciar():
             #Encriptar un mensaje
             usuario = input('Introduce un mensaje a encriptar con los siguientes caracteres: A, F, 1, 0, M, T, F, 3: ')
             encrip = []
-            mensajes(usuario, encrip, dicc, False)
+            e1.mensajes(usuario, encrip, dicc, False)
             print('Mensaje encriptado: ' + str(encrip))
 
             #Desencriptar un mensaje
             desencrip = []
-            mensajes(encrip, desencrip, dicc, True)
+            e1.mensajes(encrip, desencrip, dicc, True)
             print('Mensaje desencriptado: ' + str(desencrip))
                             
         if opcion == '2':
             print("Información de los pokemons...\n")
             pok1 = helpers.inicio_csv()
             #Árbol por nombre
-            arbol = nodoArbol(pok1[0])
+            arbol = e2.nodoArbol(pok1[0])
             e2.crear_arbol(arbol, 890, 'nombre', pok1)
             #Árbol por id
-            arbol1 = nodoArbol(pok1[0])
+            arbol1 = e2.nodoArbol(pok1[0])
             e2.crear_arbol(arbol1, 890, 'id_p', pok1)
             #Árbol por tipo1
-            arbol2 = nodoArbol(pok1[0])
+            arbol2 = e2.nodoArbol(pok1[0])
             e2.crear_arbol(arbol2, 890, 'tipo1', pok1)
 
             #busco por id_p
