@@ -268,4 +268,30 @@ class Arista(object):
                         adyacentes = adyacentes.sig
                         
             vertice = vertice.sig
-    
+
+
+buenosAires = "BuenosAires"
+sanPedro = "San Pedro"
+rosario = "Rosario"
+cordoba = "Cordoba"
+villaMaria = "Villa Maria"
+sanLuis = "San Luis"
+mendoza = "Mendoza"
+bahiaBlancha = "Bahia Blanca"
+grafo = Grafo()
+agregar(grafo, buenosAires)
+agregar(grafo, sanLuis)
+agregar(grafo, sanPedro)
+agregar(grafo, rosario)
+agregar(grafo, cordoba)
+agregar(grafo, villaMaria)
+agregar(grafo, bahiaBlanca)
+agregar(grafo, mendoza)
+relacionar(grafo, buenosAires, sanPedro)
+relacionar(grafo, buenosAires, sanLuis)
+relacionar(grafo, buenosAires, bahiaBlanca)
+relacionar(grafo, buenosAires, sanLuis)
+relacionar(grafo, sanLuis, mendoza)
+relacionar(grafo, sanLuis, villaMaria)
+relacionar(grafo, sanLuis, bahiaBlanca)
+relacionar(grafo, villaMaria, cordoba)
