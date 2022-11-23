@@ -228,3 +228,6 @@ for i in dic.keys():
         if i in j:
             dicc[j[0]] = dic[i]
 print(dicc)
+
+#Encriptar un mensaje
+usuario = input('Introduce un mensaje a encriptar con los siguientes caracteres: A, F, 1, 0, M, T, F, 3: ')
