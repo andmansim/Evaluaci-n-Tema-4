@@ -158,7 +158,7 @@ class nodoArbol(object):
 
 def crear_arbol(arboles, n, parametro, pokemon):
     for i in range(1, n):
-        arboles.insertar_nodo(pokemon[i], parametro)
+        nodoArbol.insertar_nodo(arboles,pokemon[i], parametro)
         
 def contar(lista, lista1):
     listas=[]
