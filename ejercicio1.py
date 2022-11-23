@@ -1,20 +1,3 @@
-'''
- crear un árbol de Huffman a partir de la siguiente tabla:
-
-Símbolo Frecuencia
-
-A 0.2
-F 0.17
-1 0.13
-3 0.21
-0 0.05
-M 0.09
-T 0.15
-
-b.         desarrollar las funcionas para comprimir y descomprimir un mensaje.
-'''
-
-
 from cola import*
 
 class nodoArbol(object):
@@ -205,7 +188,7 @@ def mensajes(datos, lista, diccionario, control):
                 if i in j:
                     lista.append(dicc[j])
                     
-datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
+'''datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
 #ordenamos en función de los valores
 datos0 = sorted(datos.items(), key= lambda x: x[1])
 datos1 =[]
@@ -213,10 +196,9 @@ datos1 =[]
 for j in datos0:
     datos1.append(j[1])
 
-datos2 = datos1.copy()
+datos2 = datos1.copy()#Hacemos copia pq luego eliminamos para añadir
 #Creamos los elementos del árbol
 lista_arbol = []
-
 sumar_elem(lista_arbol, datos1)
 
 #Creo raiz
@@ -230,26 +212,23 @@ while h > 1:
 #Asociamos 0, 1
 dic = {}
 arbol.ceros_unos(datos2, dic)
-dat_lista = list(datos.items())
+dat_lista = list(datos.items()) #Es un diccionario con las frecuencias de los datos y sus 1 y 0 correspondientes
+
 #Asociamos los números a las letras
-dicc = {}
+dicc = {} #El diccionario ya con los datos y sus 1, 0
 for i in dic.keys():
     for j in dat_lista:
         if i in j:
             dicc[j[0]] = dic[i]
-print(dicc)
 
 #Encriptar un mensaje
 usuario = input('Introduce un mensaje a encriptar con los siguientes caracteres: A, F, 1, 0, M, T, F, 3: ')
 encrip = []
-
-
-
 mensajes(usuario, encrip, dicc, False)
 print(encrip)
 
-desencrip = []
 #Desencriptar un mensaje
+desencrip = []
 mensajes(encrip, desencrip, dicc, True)
-print(desencrip)
+print(desencrip)'''
 

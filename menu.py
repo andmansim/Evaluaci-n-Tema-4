@@ -10,7 +10,7 @@ def iniciar():
         print("========================")
         print(" BIENVENIDO AL Manager ")
         print("========================")
-        print("[1] csv")
+        print("[1] Ejercicio1: Árbol de Huffman")
         print("[2] ")
         print("[3]  ")
         print("[4]  ")
@@ -23,12 +23,49 @@ def iniciar():
 
         if opcion == '1':
             print("Vamos a ver csv...\n")
-            #Solo he llamado al fichero helpers para q nos lo limpie y organice los datos
-            lista_dicc = helpers.leer('csvs/Pokemon.csv')     
-            helpers.comas(lista_dicc)
-            helpers.limpiar(lista_dicc)
-            helpers.camb_nombre(lista_dicc, 'Attack', 'Ataque') #se le pasa la lista, el nombre viejo y el nuevo
-            helpers.bonito(lista_dicc)
+            datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
+            #ordenamos en función de los valores
+            datos0 = sorted(datos.items(), key= lambda x: x[1])
+            datos1 =[]
+            #los pasamos a lista
+            for j in datos0:
+                datos1.append(j[1])
+
+            datos2 = datos1.copy()#Hacemos copia pq luego eliminamos para añadir
+            #Creamos los elementos del árbol
+            lista_arbol = []
+            e1.sumar_elem(lista_arbol, datos1)
+
+            #Creo raiz
+            arbol = e1.nodoArbol(lista_arbol[len(lista_arbol)-1])
+            #Añado elementos al árbol
+            h = len(lista_arbol) - 1
+            while h > 1:
+                arbol.insertar_nodo(lista_arbol[h],lista_arbol[h-1],lista_arbol[h-2])
+                h = h - 3
+
+            #Asociamos 0, 1
+            dic = {}
+            arbol.ceros_unos(datos2, dic)
+            dat_lista = list(datos.items()) #Es un diccionario con las frecuencias de los datos y sus 1 y 0 correspondientes
+
+            #Asociamos los números a las letras
+            dicc = {} #El diccionario ya con los datos y sus 1, 0
+            for i in dic.keys():
+                for j in dat_lista:
+                    if i in j:
+                        dicc[j[0]] = dic[i]
+
+            #Encriptar un mensaje
+            usuario = input('Introduce un mensaje a encriptar con los siguientes caracteres: A, F, 1, 0, M, T, F, 3: ')
+            encrip = []
+            e1.mensajes(usuario, encrip, dicc, False)
+            print(encrip)
+
+            #Desencriptar un mensaje
+            desencrip = []
+            e1.mensajes(encrip, desencrip, dicc, True)
+            print(desencrip)
                             
         if opcion == '2':
             print("...\n")
