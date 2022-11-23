@@ -232,16 +232,30 @@ print(dicc)
 #Encriptar un mensaje
 usuario = input('Introduce un mensaje a encriptar con los siguientes caracteres: A, F, 1, 0, M, T, F, 3: ')
 encrip = []
-for h in usuario:
+
+def mensajes(datos, lista, diccionario, control):
+    for i in datos:
+        for j in diccionario.keys():
+            if control:
+                if i == dicc[j]:
+                    lista.append(j)
+            else:
+                if i in j:
+                    lista.append(dicc[j])
+
+mensajes(usuario, encrip, dicc, False)
+'''for h in usuario:
     for u in dicc.keys():
         if h in u:
-            encrip.append(dicc[u])
+            encrip.append(dicc[u])'''
 print(encrip)
 
 desencrip = []
 #Desencriptar un mensaje
-for i in encrip:
+'''for i in encrip:
     for j in dicc.keys():
-        if i in dicc[j]:
-            desencrip.append(j)
+        if i == dicc[j]:
+            desencrip.append(j)'''
+mensajes(encrip, desencrip, dicc, True)
 print(desencrip)
+
