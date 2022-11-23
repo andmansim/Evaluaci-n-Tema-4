@@ -12,10 +12,8 @@ def iniciar():
         print("========================")
         print("[1] Ejercicio1: Árbol de Huffman")
         print("[2] Ejercicio2: Pokemons")
-        print("[3]  ")
-        print("[4]  ")
-        print("[5]  ")
-        print("[6]  ")
+        print("[3] Ejercicio3: Grafos ")
+        print("[4] Salir del menu ")
         print("========================")
         
         opcion = input("> ")
@@ -174,19 +172,12 @@ def iniciar():
             
         
         if opcion == '3':
-            print("...\n")
-            # Comprobación de DNI válido
+            print("Grafos...\n")
+            
            
-        
+    
+            
         if opcion == '4':
-            print("...\n")
-           
-                
-        if opcion == '5':
-            print("...\n")
-            
-            
-        if opcion == '6':
             print("Saliendo...\n")
             break
        
