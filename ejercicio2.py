@@ -198,7 +198,7 @@ def contar(lista, lista1):
         listas.append(a)
     return listas
 
-#main     
+'''#main     
 pok1 = inicio_csv()
 #Árbol por nombre
 arbol = nodoArbol(pok1[0])
@@ -295,4 +295,4 @@ for i in set(l):
 print('\n')
 print('Tipos pokemon:')
 l_rep=contar(l, l_unic)
-print(l_rep)
+print(l_rep)'''

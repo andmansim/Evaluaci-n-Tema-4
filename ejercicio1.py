@@ -41,7 +41,7 @@ class nodoArbol(object):
                 raiz.der = nodoArbol.insertar_nodo(busco.der, dato, dato1,dato2)
                 raiz.izq = nodoArbol.insertar_nodo(busco.izq, dato, dato2,dato1)
             else:    
-                busco = arbol.buscar(dato)
+                busco = nodoArbol.buscar(raiz, dato)
                 busco.izq = nodoArbol.insertar_nodo(busco.izq, dato, dato2,dato1)
                 busco.der = nodoArbol.insertar_nodo(busco.der, dato, dato1,dato2)
         else:
@@ -50,7 +50,7 @@ class nodoArbol(object):
                 raiz.der = nodoArbol.insertar_nodo(busco.der, dato, dato1, dato2)
                 raiz.izq = nodoArbol.insertar_nodo(busco.izq, dato, dato2,dato1)
             else:
-                busco = arbol.buscar(dato)
+                busco = nodoArbol.buscar(raiz, dato)
                 raiz.der = nodoArbol.insertar_nodo(busco.der, dato, dato1,dato2)
                 raiz.izq = nodoArbol.insertar_nodo(busco.izq, dato, dato2,dato1)
         return raiz
@@ -182,53 +182,9 @@ def mensajes(datos, lista, diccionario, control):
     for i in datos:
         for j in diccionario.keys():
             if control:
-                if i == dicc[j]:
+                if i == diccionario[j]:
                     lista.append(j)
             else:
                 if i in j:
-                    lista.append(dicc[j])
+                    lista.append(diccionario[j])
                     
-'''datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
-#ordenamos en función de los valores
-datos0 = sorted(datos.items(), key= lambda x: x[1])
-datos1 =[]
-#los pasamos a lista
-for j in datos0:
-    datos1.append(j[1])
-
-datos2 = datos1.copy()#Hacemos copia pq luego eliminamos para añadir
-#Creamos los elementos del árbol
-lista_arbol = []
-sumar_elem(lista_arbol, datos1)
-
-#Creo raiz
-arbol = nodoArbol(lista_arbol[len(lista_arbol)-1])
-#Añado elementos al árbol
-h = len(lista_arbol) - 1
-while h > 1:
-    arbol.insertar_nodo(lista_arbol[h],lista_arbol[h-1],lista_arbol[h-2])
-    h = h - 3
-
-#Asociamos 0, 1
-dic = {}
-arbol.ceros_unos(datos2, dic)
-dat_lista = list(datos.items()) #Es un diccionario con las frecuencias de los datos y sus 1 y 0 correspondientes
-
-#Asociamos los números a las letras
-dicc = {} #El diccionario ya con los datos y sus 1, 0
-for i in dic.keys():
-    for j in dat_lista:
-        if i in j:
-            dicc[j[0]] = dic[i]
-
-#Encriptar un mensaje
-usuario = input('Introduce un mensaje a encriptar con los siguientes caracteres: A, F, 1, 0, M, T, F, 3: ')
-encrip = []
-mensajes(usuario, encrip, dicc, False)
-print(encrip)
-
-#Desencriptar un mensaje
-desencrip = []
-mensajes(encrip, desencrip, dicc, True)
-print(desencrip)'''
-

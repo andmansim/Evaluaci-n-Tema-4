@@ -1,5 +1,5 @@
 import helper as helpers
-import ejercicio1 as e1
+from ejercicio1 import *
 import ejercicio2 as e2
 import ejercicio3 as e3
 
@@ -34,10 +34,10 @@ def iniciar():
             datos2 = datos1.copy()#Hacemos copia pq luego eliminamos para añadir
             #Creamos los elementos del árbol
             lista_arbol = []
-            e1.sumar_elem(lista_arbol, datos1)
+            sumar_elem(lista_arbol, datos1)
 
             #Creo raiz
-            arbol = e1.nodoArbol(lista_arbol[len(lista_arbol)-1])
+            arbol = nodoArbol(lista_arbol[len(lista_arbol)-1])
             #Añado elementos al árbol
             h = len(lista_arbol) - 1
             while h > 1:
@@ -59,12 +59,12 @@ def iniciar():
             #Encriptar un mensaje
             usuario = input('Introduce un mensaje a encriptar con los siguientes caracteres: A, F, 1, 0, M, T, F, 3: ')
             encrip = []
-            e1.mensajes(usuario, encrip, dicc, False)
+            mensajes(usuario, encrip, dicc, False)
             print(encrip)
 
             #Desencriptar un mensaje
             desencrip = []
-            e1.mensajes(encrip, desencrip, dicc, True)
+            mensajes(encrip, desencrip, dicc, True)
             print(desencrip)
                             
         if opcion == '2':
