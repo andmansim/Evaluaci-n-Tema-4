@@ -60,12 +60,12 @@ def iniciar():
             usuario = input('Introduce un mensaje a encriptar con los siguientes caracteres: A, F, 1, 0, M, T, F, 3: ')
             encrip = []
             mensajes(usuario, encrip, dicc, False)
-            print(encrip)
+            print('Mensaje encriptado: ' + str(encrip))
 
             #Desencriptar un mensaje
             desencrip = []
             mensajes(encrip, desencrip, dicc, True)
-            print(desencrip)
+            print('Mensaje desencriptado: ' + str(desencrip))
                             
         if opcion == '2':
             print("...\n")
