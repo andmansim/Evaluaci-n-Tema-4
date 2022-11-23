@@ -195,6 +195,16 @@ def sumar_elem(lista, datos):
         datos.append(suma)
         datos = sorted(datos)
         
+def mensajes(datos, lista, diccionario, control):
+    for i in datos:
+        for j in diccionario.keys():
+            if control:
+                if i == dicc[j]:
+                    lista.append(j)
+            else:
+                if i in j:
+                    lista.append(dicc[j])
+                    
 datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
 #ordenamos en función de los valores
 datos0 = sorted(datos.items(), key= lambda x: x[1])
@@ -233,29 +243,13 @@ print(dicc)
 usuario = input('Introduce un mensaje a encriptar con los siguientes caracteres: A, F, 1, 0, M, T, F, 3: ')
 encrip = []
 
-def mensajes(datos, lista, diccionario, control):
-    for i in datos:
-        for j in diccionario.keys():
-            if control:
-                if i == dicc[j]:
-                    lista.append(j)
-            else:
-                if i in j:
-                    lista.append(dicc[j])
+
 
 mensajes(usuario, encrip, dicc, False)
-'''for h in usuario:
-    for u in dicc.keys():
-        if h in u:
-            encrip.append(dicc[u])'''
 print(encrip)
 
 desencrip = []
 #Desencriptar un mensaje
-'''for i in encrip:
-    for j in dicc.keys():
-        if i == dicc[j]:
-            desencrip.append(j)'''
 mensajes(encrip, desencrip, dicc, True)
 print(desencrip)
 
