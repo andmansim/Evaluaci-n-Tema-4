@@ -77,7 +77,7 @@ class nodoArbol(object):
             raiz.der, aux = nodoArbol.remplazar(raiz.der)
         return raiz, aux
 
-    def por_nivel(raiz):
+    def por_nivel(raiz, lista):
         '''
         Realiza el barrido postorden del árbol
         '''
@@ -85,7 +85,7 @@ class nodoArbol(object):
         Cola.arribo(pendientes, raiz)
         while not Cola.cola_vacia(pendientes):
             nodo = Cola.atencion(pendientes)
-            print(nodo.info)
+            lista.append(nodo.info)
             if nodo.izq is not None:
                 Cola.arribo(pendientes, nodo.izq)
             if nodo.der is not None:
@@ -105,18 +105,6 @@ class nodoArbol(object):
                 pos = nodoArbol.buscar(raiz.der, clave, param)
         return pos
     
-    '''def buscar1(raiz, clave, param):
-      
-        pos = None
-        if raiz is not None:
-            if clave in raiz.info[param].lower():
-                pos = raiz
-            elif clave < raiz.info[param].lower():
-                pos = nodoArbol.buscar1(raiz.izq, clave, param)
-            else:
-                pos = nodoArbol.buscar1(raiz.der, clave, param)
-        
-        return pos'''
         
     def inorden(raiz, lista):
         '''
@@ -198,8 +186,8 @@ def contar(lista, lista1):
         listas.append(a)
     return listas
 
-'''#main     
-pok1 = inicio_csv()
+    
+'''pok1 = inicio_csv()
 #Árbol por nombre
 arbol = nodoArbol(pok1[0])
 crear_arbol(arbol, 890, 'nombre', pok1)
@@ -211,7 +199,7 @@ arbol2 = nodoArbol(pok1[0])
 crear_arbol(arbol2, 890, 'tipo1', pok1)
 
 #busco por id_p
-print('Buscamos datos:')
+print('-----------Buscamos datos:------------------')
 num = int(input('Introduce id del pokemon a buscar:'))
 busco = arbol1.buscar(num, 'id_p')
 print(busco.info)
@@ -224,6 +212,8 @@ if lista == []:
 print(lista)
 
 #nombres pokemon de tipo agua, fuego, planta y eléctrico
+print('\n')
+print('------------------Tipos de pokemons--------------------')
 nom_agua= []
 arbol2.preorden2(nom_agua, 'water', 'tipo1', 'nombre')
 print('\n')
@@ -249,23 +239,26 @@ print('Pokemons tipo eléctrico:')
 print(nom_electro)
 
 #Lista ordenada por id
+print('\n')
+print('----------------Listas ordenadas-----------------')
 or_id=[]
 arbol1.inorden(or_id)
 print('\n')
 print('Lista ordenada por id:')
-print(or_id[:3])
+print(or_id[:3]) #Solo son 3 ejemplos
 
 #lista ordenada por nombre
 or_nom=[]
 arbol.inorden(or_nom)
 print('\n')
 print('Lista ordenada por nombre:')
-print(or_nom[:3])
+print(or_nom[:3]) #Solo son 3 ejemplos
 
 print('\n')
-a = [arbol.por_nivel()]
+nom_por_nivel=[]
+arbol.por_nivel(nom_por_nivel)
 print('Lista2 ordenada por nombre:')
-print(a[:3]) #Mirar
+print(nom_por_nivel[:3]) #Solo son 3 ejemplos
 
 #Jolteo(electrico), Lycanroc(roca) y Tyrantrum(roca, dragon)
 elec = []
