@@ -176,6 +176,12 @@ class nodoArbol(object):
                         lista.pop()
                     
         return encontrado
+
+    def ceros_unos(raiz, datos, dic):
+        for i in datos:
+            cero_uno = []
+            nodoArbol.recorrer_ar(raiz, i, cero_uno, False)
+            dic[i] = cero_uno
                 
 def sumar_elem(lista, datos):
     for i in range(len(datos)-1):
@@ -197,7 +203,7 @@ datos1 =[]
 for j in datos0:
     datos1.append(j[1])
 
-d = datos1.copy()
+datos2 = datos1.copy()
 #Creamos los elementos del árbol
 lista_arbol = []
 
@@ -212,11 +218,13 @@ while h > 1:
     h = h - 3
 
 #Asociamos 0, 1
-print(d)
-
 dic = {}
-for i in d:
-    cero_uno = []
-    arbol.recorrer_ar(i, cero_uno, False)
-    dic[i] = cero_uno
-print(dic)
+arbol.ceros_unos(datos2, dic)
+dat_lista = list(datos.items())
+#Asociamos los números a las letras
+dicc = {}
+for i in dic.keys():
+    for j in dat_lista:
+        if i in j:
+            dicc[j[0]] = dic[i]
+print(dicc)
