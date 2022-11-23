@@ -231,3 +231,11 @@ print(dicc)
 
 #Encriptar un mensaje
 usuario = input('Introduce un mensaje a encriptar con los siguientes caracteres: A, F, 1, 0, M, T, F, 3: ')
+mensaje = []
+for h in usuario:
+    for u in dicc.keys():
+        if h in u:
+            mensaje.append(dicc[u])
+print(mensaje)
+
+#Desencriptar un mensaje
