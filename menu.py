@@ -4,7 +4,7 @@ import ejercicio2 as e2
 import ejercicio3 as e3
 
 def iniciar():
-     while True:
+    while True:
         helpers.limpiar_pantalla()
         
         print("========================")
@@ -22,7 +22,7 @@ def iniciar():
         helpers.limpiar_pantalla()
 
         if opcion == '1':
-            print("Vamos a ver csv...\n")
+            print("Encriptamos y desencriptamos...\n")
             datos = {'A': 0.2, 'F': 0.17, '1': 0.13, '3': 0.21, '0': 0.05 , 'M': 0.09, 'T': 0.15}
             #ordenamos en función de los valores
             datos0 = sorted(datos.items(), key= lambda x: x[1])
