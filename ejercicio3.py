@@ -32,7 +32,7 @@ class nodoVertice(object):
             self.adyacentes = nodo
             self.sig = aux_adyacente
 
-class Adayacente(object):
+class Adyacente(object):
     def __init__(self, info, distancia):
         self.info = info
         self.sig = None
@@ -61,4 +61,10 @@ class grafo(object):
                 print(vertice.info)
                 vertice = vertice.sig
         
-        
+maravillas=[{'nombre': 'Gran Muralla China', 'pais': 'China', 'tipo': 'ARQ'}, 
+            {'nombre': 'Coliseo de Roma' , 'pais': 'Italia' , 'tipo': 'ARQ'}, 
+            {'nombre': 'Ciudad de Petra', 'pais': 'Jordania ' , 'tipo': 'ARQ'}, 
+            {'nombre': 'Bahía de Ha Long', 'pais': 'Vietnam' , 'tipo': 'NAT'}, 
+            {'nombre': 'Isla Jeju', 'pais': 'Corea Sur' , 'tipo': 'NAT'}, 
+            {'nombre': 'Machu Picchu', 'pais': 'Peru' , 'tipo': 'ARQ'}, 
+            {'nombre': 'Taj Mahal', 'pais': 'India', 'tipo':'ARQ'}]
