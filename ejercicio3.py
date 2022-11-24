@@ -22,5 +22,21 @@ class nodoVertice(object):
         self.sig = None
         self.visitado = False
         self.adyacentes = None
-        
+    
+    def insertar_adyacente(self, info, distancia):
+        nodo = Adyacente(info, distancia)
+        if self.adyacentes is None:
+            self.adyacentes = nodo
+        else:
+            aux_adyacente = self.adyacentes
+            self.adyacentes = nodo
+            self.sig = aux_adyacente
+
+class Adayacente(object):
+    def __init__(self, info, distancia):
+        self.info = info
+        self.sig = None
+        distancia = distancia
+
+
         
