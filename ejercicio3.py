@@ -1,9 +1,12 @@
 '''
 Ejercicio 3
 
-Se requiere implementar un grafo para almacenar las siete maravillas arquitectónicas modernas y naturales del mundo, para lo cual se deben tener en cuenta las siguientes actividades:
-a.         de cada una de las maravillas se conoce su nombre, país de ubicación (puede ser más de uno en las naturales) y tipo (natural o arquitectónica);
-b.         cada una debe estar relacionada con las otras seis de su tipo, para lo que se debe almacenar la distancia que las separa;
+Se requiere implementar un grafo para almacenar las siete maravillas arquitectónicas modernas y naturales del mundo, 
+para lo cual se deben tener en cuenta las siguientes actividades:
+a.         de cada una de las maravillas se conoce su nombre, país de ubicación (puede ser más de uno en las 
+naturales) y tipo (natural o arquitectónica);
+b.         cada una debe estar relacionada con las otras seis de su tipo, para lo que se debe almacenar la 
+distancia que las separa;
 c.         hallar el árbol de expansión mínimo de cada tipo de las maravillas;
 d.         determinar si existen países que dispongan de maravillas arquitectónicas y naturales;
 e.         determinar si algún país tiene más de una maravilla del mismo tipo;
@@ -46,7 +49,7 @@ class Grafo(object):
     def insertar (self, dato ):
         nodo = nodoVertice(dato)
         if self.inicio is None:
-            self.iicio = nodo
+            self.inicio = nodo
         else:
             aux_grafo = self.inicio
             self.inicio = nodo
@@ -85,3 +88,16 @@ grafo.insertar(m4)
 grafo.insertar(m5)
 grafo.insertar(m6)
 grafo.insertar(m7)
+
+grafo.mostrar()
+#distancia NAT: 2362
+#distancia Gran Muralla China a Coliseo de Roma: 7565
+#distancia Gran Muralla China a Ciudad de Petra: 6217
+#distancia Gran Muralla China a Machu Picchu: 17038
+#distancia Gran Muralla China a Taj Mahal: 7510
+#distancia Coliseo de Roma a Ciudad de Petra: 3673
+#distancia Coliseo de Roma a Machu Picchu: 10478
+#distancia Coliseo de Roma a Taj Mahal: 6571
+#distancia Ciudad de Petra a Machu Picchu: 12547
+#distancia Ciudad de Petra a Taj Mahal: 4396
+#distancia Machu Picchu a Taj Mahal: 16941
