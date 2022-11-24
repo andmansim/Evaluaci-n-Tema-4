@@ -71,13 +71,16 @@ def rest_visitado(grafo):
         vertice.visitado = False
         vertice = vertice.sig
         
-maravillas=[{'nombre': 'Gran Muralla China', 'pais': 'China', 'tipo': 'ARQ'}, 
-            {'nombre': 'Coliseo de Roma' , 'pais': 'Italia' , 'tipo': 'ARQ'}, 
-            {'nombre': 'Ciudad de Petra', 'pais': 'Jordania ' , 'tipo': 'ARQ'}, 
-            {'nombre': 'Bahía de Ha Long', 'pais': 'Vietnam' , 'tipo': 'NAT'}, 
-            {'nombre': 'Isla Jeju', 'pais': 'Corea Sur' , 'tipo': 'NAT'}, 
-            {'nombre': 'Machu Picchu', 'pais': 'Peru' , 'tipo': 'ARQ'}, 
+maravillas=[{'nombre': 'Gran Muralla China', 'pais': 'China', 'tipo': 'ARQ'}, {'nombre': 'Coliseo de Roma' , 'pais': 'Italia' , 'tipo': 'ARQ'}, 
+            {'nombre': 'Ciudad de Petra', 'pais': 'Jordania ' , 'tipo': 'ARQ'}, {'nombre': 'Bahía de Ha Long', 'pais': 'Vietnam' , 'tipo': 'NAT'}, 
+            {'nombre': 'Isla Jeju', 'pais': 'Corea Sur' , 'tipo': 'NAT'}, {'nombre': 'Machu Picchu', 'pais': 'Peru' , 'tipo': 'ARQ'}, 
             {'nombre': 'Taj Mahal', 'pais': 'India', 'tipo':'ARQ'}]
+
+dist = [['Gran Muralla China', 'Coliseo de Roma', 7565], ['Gran Muralla China', 'Ciudad de Petra', 6217], 
+        ['Gran Muralla China', 'Machu Picchu', 17038], ['Gran Muralla China', 'Taj Mahal', 7510], 
+        ['Coliseo de Roma','Ciudad de Petra', 3673], ['Coliseo de Roma','Machu Picchu', 10478], 
+        ['Coliseo de Roma','Taj Mahal', 6571], ['Ciudad de Petra','Taj Mahal', 4396], 
+        ['Ciudad de Petra', 'Machu Picchu',  12547], ['Machu Picchu', 'Taj Mahal', 16941], ['Bahía de Ha Long', 'Isla Jeju', 2362 ]]
 #creamos vértices
 m1 = nodoVertice(maravillas[0])
 m2 = nodoVertice(maravillas[1])
@@ -97,17 +100,7 @@ grafo.insertar(m6)
 grafo.insertar(m7)
 
 
-dist = [['Gran Muralla China', 'Coliseo de Roma', 7565], 
-        ['Gran Muralla China', 'Ciudad de Petra', 6217], 
-        ['Gran Muralla China', 'Machu Picchu', 17038], 
-        ['Gran Muralla China', 'Taj Mahal', 7510], 
-        ['Coliseo de Roma','Ciudad de Petra', 3673], 
-        ['Coliseo de Roma','Machu Picchu', 10478], 
-        ['Coliseo de Roma','Taj Mahal', 6571], 
-        ['Ciudad de Petra','Taj Mahal', 4396], 
-        ['Ciudad de Petra', 'Machu Picchu',  12547], 
-        ['Machu Picchu', 'Taj Mahal', 16941], 
-        ['Bahía de Ha Long', 'Isla Jeju', 2362 ]]
+
 grafo.mostrar()
 
 rest_visitado(grafo)
@@ -147,6 +140,7 @@ def ajust_vertice2(vertice, vertice2, dist):
             distancia(vertice, vertice2, dist)
             print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia) 
         ajust_vertice2(vertice, vertice2.sig, dist)
+        
 def colocar_adyacencia(vertice, maravillas, dist, n):
     if vertice is not None:
         vertice2 = vertice.sig
