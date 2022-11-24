@@ -13,11 +13,12 @@ e.         determinar si algún país tiene más de una maravilla del mismo tipo
 f.         deberá utilizar un grafo no dirigido.
 '''
 
-class nodo:
-    def __init__(self, nombre, pais, tipo):
-        self.nombre = nombre
-        self.pais = pais
-        self.tipo= tipo
+class Adyacente(object):
+    def __init__(self, info, distancia):
+        self.info = info
+        self.sig = None
+        self.distancia = distancia
+        self.visitado = False
 
 class nodoVertice(object):
     def __init__(self, info):
@@ -35,12 +36,7 @@ class nodoVertice(object):
             self.adyacentes = nodo
             self.sig = aux_adyacente
 
-class Adyacente(object):
-    def __init__(self, info, distancia):
-        self.info = info
-        self.sig = None
-        self.distancia = distancia
-        self.visitado = False
+
 
 class Grafo(object):
     def __init__(self):
