@@ -102,5 +102,11 @@ grafo.mostrar()
 #distancia Ciudad de Petra a Taj Mahal: 4396
 #distancia Machu Picchu a Taj Mahal: 16941
 vertice = grafo.inicio
-if vertice.info['tipo'] == 'ARQ':
-    
+c = False
+while c !=True:
+    if vertice.info['tipo'] == 'ARQ':
+        print(vertice.info)
+        vertice = vertice.sig
+    else:
+        vertice.insertar_adyacente(vertice.sig, 2362)
+        c = True
