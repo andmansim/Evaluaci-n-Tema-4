@@ -95,7 +95,7 @@ def colocar_adyacencia(vertice, maravillas, dist, n):
                 n = n + 1
                 colocar_adyacencia(maravillas[n], maravillas, dist, n)
                    
-maravillas=[{'nombre': 'Gran Muralla China', 'pais': 'China', 'tipo': 'ARQ'}, {'nombre': 'Coliseo de Roma' , 'pais': 'Italia' , 'tipo': 'ARQ'}, 
+'''maravillas=[{'nombre': 'Gran Muralla China', 'pais': 'China', 'tipo': 'ARQ'}, {'nombre': 'Coliseo de Roma' , 'pais': 'Italia' , 'tipo': 'ARQ'}, 
             {'nombre': 'Ciudad de Petra', 'pais': 'Jordania ' , 'tipo': 'ARQ'}, {'nombre': 'Bahía de Ha Long', 'pais': 'Vietnam' , 'tipo': 'NAT'}, 
             {'nombre': 'Isla Jeju', 'pais': 'Corea Sur' , 'tipo': 'NAT'}, {'nombre': 'Machu Picchu', 'pais': 'Peru' , 'tipo': 'ARQ'}, 
             {'nombre': 'Taj Mahal', 'pais': 'India', 'tipo':'ARQ'}]
@@ -131,4 +131,4 @@ maravillas = [m1, m2, m3, m4, m5, m6, m7]
 vertice = grafo.inicio
 n = 0
 
-colocar_adyacencia(vertice, maravillas, dist, n)            
+colocar_adyacencia(vertice, maravillas, dist, n) '''           
