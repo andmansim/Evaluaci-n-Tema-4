@@ -104,6 +104,11 @@ grafo.insertar(m7)
 #distancia Ciudad de Petra a Taj Mahal: 4396
 
 #distancia Machu Picchu a Taj Mahal: 16941
+def distancias(v1, v2, lista):
+    for i in range(len(lista)):
+        if v1.info['nombre'] in lista[i] and v2.info['nombre'] in lista[i]:
+            v1.insertar_adyacente(v2, lista[i][2])
+    return v1, v2
 
 dist = [['Gran Muralla China', 'Coliseo de Roma', 7565], 
         ['Gran Muralla China', 'Ciudad de Petra', 6217], 
@@ -116,25 +121,26 @@ dist = [['Gran Muralla China', 'Coliseo de Roma', 7565],
         ['Ciudad de Petra', 'Machu Picchu',  12547], 
         ['Machu Picchu', 'Taj Mahal', 16941], 
         ['Bahía de Ha Long', 'Isla Jeju', 2362 ]]
-grafo.mostrar()
+#grafo.mostrar()
+
+def tipo(v1, v2, lista):
+    if v1.info['tipo'] == v2.info['tipo']:
+        v1, v2 = distancias(v1, v2, lista)
+        a = True
+    else:
+        a = False
+    return v1, v2, a
 vertice = grafo.inicio
-def distancias(v1, v2, lista):
-    for i in range(len(lista)):
-                    if v1.info['nombre'] in lista[i] and v2.info['nombre'] in lista[i]:
-                        v1.insertar_adyacente(v2, lista[i][2])
-    return v1, v2
+
 while vertice is not None:
+    vertice2 = grafo.inicio.sig
     if not vertice.visitado:
-        vertice.visitado = True
-        vertice2 = vertice.sig
-        if vertice2 is not None:
+        while vertice2 is not None:
             if vertice.info['tipo'] == vertice2.info['tipo']:
-                vertice, vertice2 = distancias(vertice, vertice2, dist)
-                '''for i in range(len(dist)):
-                    if vertice.info['nombre'] in dist[i] and vertice2.info['nombre'] in dist[i]:
-                        vertice.insertar_adyacente(vertice.sig, dist[i][2])'''
+            vertice, vertice2,  vertice.visitado = tipo(vertice, vertice2, dist )
+            if vertice.visitado == True:
                 print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia)
-                    
-                vertice = vertice.sig
-            else:
-                vertice2 = vertice2.sig
+            vertice2 = vertice2.sig      
+        vertice = vertice.sig
+            
+            
