@@ -104,8 +104,7 @@ grafo.insertar(m7)
 #distancia Ciudad de Petra a Taj Mahal: 4396
 
 #distancia Machu Picchu a Taj Mahal: 16941
-vertice = grafo.inicio
-c = False
+
 dist = [['Gran Muralla China', 'Coliseo de Roma', 7565], 
         ['Gran Muralla China', 'Ciudad de Petra', 6217], 
         ['Gran Muralla China', 'Machu Picchu', 17038], 
@@ -115,7 +114,10 @@ dist = [['Gran Muralla China', 'Coliseo de Roma', 7565],
         ['Coliseo de Roma','Taj Mahal', 6571], 
         ['Ciudad de Petra','Taj Mahal', 4396], 
         ['Ciudad de Petra', 'Machu Picchu',  12547], 
-        ['Machu Picchu', 'Taj Mahal', 16941]]
+        ['Machu Picchu', 'Taj Mahal', 16941], 
+        ['Bahía de Ha Long', 'Isla Jeju', 2362 ]]
+grafo.mostrar()
+vertice = grafo.inicio
 while vertice is not None:
     if not vertice.visitado:
         vertice.visitado = True
@@ -123,10 +125,10 @@ while vertice is not None:
         if vertice2 is not None:
             if vertice.info['tipo'] == vertice2.info['tipo']:
                 for i in range(len(dist)):
-                    if vertice.info['nombre'] in dist[i][0] and vertice2.info['nombre'] in dist[i][1]:
+                    if vertice.info['nombre'] in dist[i] and vertice2.info['nombre'] in dist[i]:
                         vertice.insertar_adyacente(vertice.sig, dist[i][2])
                         print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia)
                     
-                    vertice = vertice.sig
-            else:
                 vertice = vertice.sig
+            else:
+                vertice2 = vertice2.sig
