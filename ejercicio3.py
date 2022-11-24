@@ -74,7 +74,7 @@ def rest_visitado(grafo):
 def distancia(v1, v2, lista):
     for i in range(len(lista)):
         if v1.info['nombre'] in lista[i] and v2.info['nombre'] in lista[i]:
-            v1.insertar_adyacente(v2, dist[i][2])
+            v1.insertar_adyacente(v2, lista[i][2])
 
 def ajust_vertice2(vertice, vertice2, dist):
     if vertice2 is not None:

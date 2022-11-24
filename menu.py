@@ -202,13 +202,13 @@ def iniciar():
             grafo.insertar(m7)
 
 
-
+            print('vertices iniciales ---------------------------')
             grafo.mostrar()
             e3.rest_visitado(grafo)
             maravillas = [m1, m2, m3, m4, m5, m6, m7]
             vertice = grafo.inicio
             n = 0
-
+            print('\nGrafo completo-----------------------------')
             e3.colocar_adyacencia(vertice, maravillas, dist, n) 
                     
                 
