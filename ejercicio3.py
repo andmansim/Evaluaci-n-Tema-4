@@ -46,15 +46,15 @@ class Grafo(object):
         self.inicio = None
         self.tamanio = 0
         
-    def insertar (self, dato ):
-        nodo = nodoVertice(dato)
-        if self.inicio is None:
-            self.inicio = nodo
+    def insertar(grafo, dato):
+        #nodo = nodoVertice(dato)
+        if grafo.inicio is None:
+            grafo.inicio = dato
         else:
-            aux_grafo = self.inicio
-            self.inicio = nodo
-            self.inicio.sig = aux_grafo
-            self.tamanio +=1
+            aux_grafo = grafo.inicio
+            grafo.inicio = dato
+            grafo.inicio.sig = aux_grafo
+            grafo.tamanio +=1
     
     def mostrar(self):
         vertice = self.inicio
@@ -101,3 +101,6 @@ grafo.mostrar()
 #distancia Ciudad de Petra a Machu Picchu: 12547
 #distancia Ciudad de Petra a Taj Mahal: 4396
 #distancia Machu Picchu a Taj Mahal: 16941
+vertice = grafo.inicio
+if vertice.info['tipo'] == 'ARQ':
+    
