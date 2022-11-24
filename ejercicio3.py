@@ -40,6 +40,7 @@ class Adyacente(object):
         self.info = info
         self.sig = None
         self.distancia = distancia
+        self.visitado = False
 
 class Grafo(object):
     def __init__(self):
@@ -121,25 +122,34 @@ dist = [['Gran Muralla China', 'Coliseo de Roma', 7565],
         ['Ciudad de Petra', 'Machu Picchu',  12547], 
         ['Machu Picchu', 'Taj Mahal', 16941], 
         ['Bahía de Ha Long', 'Isla Jeju', 2362 ]]
-#grafo.mostrar()
+grafo.mostrar()
 
-def tipo(v1, v2, lista):
+'''def tipo(v1, v2, lista):
     if v1.info['tipo'] == v2.info['tipo']:
         v1, v2 = distancias(v1, v2, lista)
         a = True
     else:
         a = False
     return v1, v2, a
-vertice = grafo.inicio
+'''
+def rest_visitado(grafo):
+    vertice = grafo.inicio
+    while vertice is not None:
+        vertice.visitado = False
+        vertice = vertice.sig
+rest_visitado(grafo)
 
+vertice = grafo.inicio
 while vertice is not None:
-    vertice2 = grafo.inicio.sig
+    vertice2 = vertice.sig
     if not vertice.visitado:
         while vertice2 is not None:
             if vertice.info['tipo'] == vertice2.info['tipo']:
-            vertice, vertice2,  vertice.visitado = tipo(vertice, vertice2, dist )
-            if vertice.visitado == True:
-                print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia)
+                for i in range(len(dist)):
+                    if vertice.info['nombre'] in dist[i] and vertice2.info['nombre'] in dist[i]:
+                        vertice.insertar_adyacente(vertice2, dist[i][2])
+                
+                print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia) 
             vertice2 = vertice2.sig      
         vertice = vertice.sig
             
