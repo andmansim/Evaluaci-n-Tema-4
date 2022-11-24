@@ -95,20 +95,38 @@ grafo.insertar(m7)
 #distancia Gran Muralla China a Ciudad de Petra: 6217
 #distancia Gran Muralla China a Machu Picchu: 17038
 #distancia Gran Muralla China a Taj Mahal: 7510
+
 #distancia Coliseo de Roma a Ciudad de Petra: 3673
 #distancia Coliseo de Roma a Machu Picchu: 10478
 #distancia Coliseo de Roma a Taj Mahal: 6571
+
 #distancia Ciudad de Petra a Machu Picchu: 12547
 #distancia Ciudad de Petra a Taj Mahal: 4396
+
 #distancia Machu Picchu a Taj Mahal: 16941
 vertice = grafo.inicio
 c = False
-while c !=True:
-    if vertice.info['tipo'] == 'ARQ':
-        print(vertice.info)
-        vertice = vertice.sig
-    else:
-        if vertice.info['tipo'] == vertice.sig.info['tipo']:
-            vertice.insertar_adyacente(vertice.sig, 2362)
-            print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia)
-            c = True
+dist = [['Gran Muralla China', 'Coliseo de Roma', 7565], 
+        ['Gran Muralla China', 'Ciudad de Petra', 6217], 
+        ['Gran Muralla China', 'Machu Picchu', 17038], 
+        ['Gran Muralla China', 'Taj Mahal', 7510], 
+        ['Coliseo de Roma','Ciudad de Petra', 3673], 
+        ['Coliseo de Roma','Machu Picchu', 10478], 
+        ['Coliseo de Roma','Taj Mahal', 6571], 
+        ['Ciudad de Petra','Taj Mahal', 4396], 
+        ['Ciudad de Petra', 'Machu Picchu',  12547], 
+        ['Machu Picchu', 'Taj Mahal', 16941]]
+while vertice is not None:
+    if not vertice.visitado:
+        vertice.visitado = True
+        vertice2 = vertice.sig
+        if vertice2 is not None:
+            if vertice.info['tipo'] == vertice2.info['tipo']:
+                for i in range(len(dist)):
+                    if vertice.info['nombre'] in dist[i][0] and vertice2.info['nombre'] in dist[i][1]:
+                        vertice.insertar_adyacente(vertice.sig, dist[i][2])
+                        print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia)
+                    
+                    vertice = vertice.sig
+            else:
+                vertice = vertice.sig
