@@ -1,17 +1,3 @@
-'''
-Ejercicio 3
-
-Se requiere implementar un grafo para almacenar las siete maravillas arquitectónicas modernas y naturales del mundo, 
-para lo cual se deben tener en cuenta las siguientes actividades:
-a.         de cada una de las maravillas se conoce su nombre, país de ubicación (puede ser más de uno en las 
-naturales) y tipo (natural o arquitectónica);
-b.         cada una debe estar relacionada con las otras seis de su tipo, para lo que se debe almacenar la 
-distancia que las separa;
-c.         hallar el árbol de expansión mínimo de cada tipo de las maravillas;
-d.         determinar si existen países que dispongan de maravillas arquitectónicas y naturales;
-e.         determinar si algún país tiene más de una maravilla del mismo tipo;
-f.         deberá utilizar un grafo no dirigido.
-'''
 
 class Adyacente(object):
     def __init__(self, info, distancia):
@@ -96,6 +82,7 @@ def ajust_vertice2(vertice, vertice2, dist):
             vertice2 = vertice2.info
         if vertice.info['tipo'] == vertice2.info['tipo']:
             distancia(vertice, vertice2, dist)
+            print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia)
         ajust_vertice2(vertice, vertice2.sig, dist)
         
 def colocar_adyacencia(vertice, maravillas, dist, n):
