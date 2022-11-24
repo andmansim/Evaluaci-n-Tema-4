@@ -38,5 +38,27 @@ class Adayacente(object):
         self.sig = None
         distancia = distancia
 
-
+class grafo(object):
+    def __init__(self):
+        self.inicio = None
+        self.tamanio = 0
+        
+    def insertar (self, dato ):
+        nodo = nodoVertice(dato)
+        if self.inicio is None:
+            self.iicio = nodo
+        else:
+            aux_grafo = self.inicio
+            self.inicio = nodo
+            self.inicio.sig = aux_grafo
+            self.tamanio +=1
+    
+    def mostrar(self):
+        vertice = self.inicio
+        while vertice is not None:
+            if not vertice.visitado:
+                vertice.visitado= True
+                print(vertice.info)
+                vertice = vertice.sig
+        
         
