@@ -60,6 +60,25 @@ class Grafo(object):
                 print(vertice.info)
                 vertice = vertice.sig 
 
+'''def colocar_adyacencia(vertice, maravillas, dist, n):
+    while vertice is not None:
+        vertice2 = vertice.sig
+        if not vertice.visitado:
+            vertice.visitado = True
+            while vertice2 is not None:
+                if not isinstance(vertice2.info, dict):
+                    vertice2 = vertice2.info
+                if vertice.info['tipo'] == vertice2.info['tipo']:
+                    distancia(vertice, vertice2, dist)
+                    print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia) 
+                vertice2 = vertice2.sig 
+            ''if n < 6:
+                n = n + 1
+                vertice = maravillas[n]''
+            
+            
+colocar_adyacencia(vertice, maravillas, dist, n)            
+'''
 def rest_visitado(grafo):
     vertice = grafo.inicio
     while vertice is not None:
@@ -77,7 +96,6 @@ def ajust_vertice2(vertice, vertice2, dist):
             vertice2 = vertice2.info
         if vertice.info['tipo'] == vertice2.info['tipo']:
             distancia(vertice, vertice2, dist)
-            print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia) 
         ajust_vertice2(vertice, vertice2.sig, dist)
         
 def colocar_adyacencia(vertice, maravillas, dist, n):
@@ -125,25 +143,5 @@ rest_visitado(grafo)
 maravillas = [m1, m2, m3, m4, m5, m6, m7]
 vertice = grafo.inicio
 n = 0
-'''def colocar_adyacencia(vertice, maravillas, dist, n):
-    while vertice is not None:
-        vertice2 = vertice.sig
-        if not vertice.visitado:
-            vertice.visitado = True
-            while vertice2 is not None:
-                if not isinstance(vertice2.info, dict):
-                    vertice2 = vertice2.info
-                if vertice.info['tipo'] == vertice2.info['tipo']:
-                    distancia(vertice, vertice2, dist)
-                    print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia) 
-                vertice2 = vertice2.sig 
-            ''if n < 6:
-                n = n + 1
-                vertice = maravillas[n]''
-            
-            
-colocar_adyacencia(vertice, maravillas, dist, n)            
-'''
-
 
 colocar_adyacencia(vertice, maravillas, dist, n)            
