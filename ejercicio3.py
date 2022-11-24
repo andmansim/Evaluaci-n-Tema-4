@@ -68,3 +68,13 @@ maravillas=[{'nombre': 'Gran Muralla China', 'pais': 'China', 'tipo': 'ARQ'},
             {'nombre': 'Isla Jeju', 'pais': 'Corea Sur' , 'tipo': 'NAT'}, 
             {'nombre': 'Machu Picchu', 'pais': 'Peru' , 'tipo': 'ARQ'}, 
             {'nombre': 'Taj Mahal', 'pais': 'India', 'tipo':'ARQ'}]
+#creamos vértices
+m1 = nodoVertice(maravillas[0])
+m2 = nodoVertice(maravillas[1])
+m3 = nodoVertice(maravillas[2])
+m4 = nodoVertice(maravillas[3])
+m5 = nodoVertice(maravillas[4])
+m6 = nodoVertice(maravillas[5])
+m7= nodoVertice(maravillas[6])
+
+
