@@ -39,7 +39,7 @@ class Adyacente(object):
     def __init__(self, info, distancia):
         self.info = info
         self.sig = None
-        distancia = distancia
+        self.distancia = distancia
 
 class Grafo(object):
     def __init__(self):
@@ -89,7 +89,7 @@ grafo.insertar(m5)
 grafo.insertar(m6)
 grafo.insertar(m7)
 
-grafo.mostrar()
+#grafo.mostrar()
 #distancia NAT: 2362
 #distancia Gran Muralla China a Coliseo de Roma: 7565
 #distancia Gran Muralla China a Ciudad de Petra: 6217
@@ -108,5 +108,7 @@ while c !=True:
         print(vertice.info)
         vertice = vertice.sig
     else:
-        vertice.insertar_adyacente(vertice.sig, 2362)
-        c = True
+        if vertice.info['tipo'] == vertice.sig.info['tipo']:
+            vertice.insertar_adyacente(vertice.sig, 2362)
+            print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia)
+            c = True
