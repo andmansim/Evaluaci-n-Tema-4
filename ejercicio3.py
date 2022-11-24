@@ -120,7 +120,7 @@ def distancia(v1, v2, lista):
             v1.insertar_adyacente(v2, dist[i][2])
             return v1, v2
 n = 0
-def colocar_adyacencia(vertice, maravillas, dist):
+'''def colocar_adyacencia(vertice, maravillas, dist, n):
     while vertice is not None:
         vertice2 = vertice.sig
         if not vertice.visitado:
@@ -129,18 +129,32 @@ def colocar_adyacencia(vertice, maravillas, dist):
                 if not isinstance(vertice2.info, dict):
                     vertice2 = vertice2.info
                 if vertice.info['tipo'] == vertice2.info['tipo']:
-                    '''for i in range(len(dist)):
-                        if vertice.info['nombre'] in dist[i] and vertice2.info['nombre'] in dist[i]:
-                            vertice.insertar_adyacente(vertice2, dist[i][2])'''
                     distancia(vertice, vertice2, dist)
                     print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia) 
                 vertice2 = vertice2.sig 
+            ''if n < 6:
+                n = n + 1
+                vertice = maravillas[n]''
+            
+            
+colocar_adyacencia(vertice, maravillas, dist, n)            
+'''
+def ajust_vertice2(vertice, vertice2, dist):
+    if vertice2 is not None:
+        if not isinstance(vertice2.info, dict):
+            vertice2 = vertice2.info
+        if vertice.info['tipo'] == vertice2.info['tipo']:
+            distancia(vertice, vertice2, dist)
+            print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia) 
+        ajust_vertice2(vertice, vertice2.sig, dist)
+def colocar_adyacencia(vertice, maravillas, dist, n):
+    if vertice is not None:
+        vertice2 = vertice.sig
+        if not vertice.visitado:
+            vertice.visitado = True
+            ajust_vertice2(vertice, vertice2, dist)
             if n < 6:
                 n = n + 1
-                vertice = maravillas[n]
-            else:
-                print('Ya')
-                break
-            
-            
-colocar_adyacencia(vertice, maravillas, dist)            
+                colocar_adyacencia(maravillas[n], maravillas, dist, n)
+
+colocar_adyacencia(vertice, maravillas, dist, n)            
