@@ -118,16 +118,22 @@ dist = [['Gran Muralla China', 'Coliseo de Roma', 7565],
         ['Bahía de Ha Long', 'Isla Jeju', 2362 ]]
 grafo.mostrar()
 vertice = grafo.inicio
+def distancias(v1, v2, lista):
+    for i in range(len(lista)):
+                    if v1.info['nombre'] in lista[i] and v2.info['nombre'] in lista[i]:
+                        v1.insertar_adyacente(v2, lista[i][2])
+    return v1, v2
 while vertice is not None:
     if not vertice.visitado:
         vertice.visitado = True
         vertice2 = vertice.sig
         if vertice2 is not None:
             if vertice.info['tipo'] == vertice2.info['tipo']:
-                for i in range(len(dist)):
+                vertice, vertice2 = distancias(vertice, vertice2, dist)
+                '''for i in range(len(dist)):
                     if vertice.info['nombre'] in dist[i] and vertice2.info['nombre'] in dist[i]:
-                        vertice.insertar_adyacente(vertice.sig, dist[i][2])
-                        print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia)
+                        vertice.insertar_adyacente(vertice.sig, dist[i][2])'''
+                print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia)
                     
                 vertice = vertice.sig
             else:
