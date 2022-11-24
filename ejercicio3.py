@@ -37,7 +37,6 @@ class nodoVertice(object):
             self.sig = aux_adyacente
 
 
-
 class Grafo(object):
     def __init__(self):
         self.inicio = None
@@ -66,7 +65,31 @@ def rest_visitado(grafo):
     while vertice is not None:
         vertice.visitado = False
         vertice = vertice.sig
+
+def distancia(v1, v2, lista):
+    for i in range(len(lista)):
+        if v1.info['nombre'] in lista[i] and v2.info['nombre'] in lista[i]:
+            v1.insertar_adyacente(v2, dist[i][2])
+
+def ajust_vertice2(vertice, vertice2, dist):
+    if vertice2 is not None:
+        if not isinstance(vertice2.info, dict):
+            vertice2 = vertice2.info
+        if vertice.info['tipo'] == vertice2.info['tipo']:
+            distancia(vertice, vertice2, dist)
+            print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia) 
+        ajust_vertice2(vertice, vertice2.sig, dist)
         
+def colocar_adyacencia(vertice, maravillas, dist, n):
+    if vertice is not None:
+        vertice2 = vertice.sig
+        if not vertice.visitado:
+            vertice.visitado = True
+            ajust_vertice2(vertice, vertice2, dist)
+            if n < 6:
+                n = n + 1
+                colocar_adyacencia(maravillas[n], maravillas, dist, n)
+                   
 maravillas=[{'nombre': 'Gran Muralla China', 'pais': 'China', 'tipo': 'ARQ'}, {'nombre': 'Coliseo de Roma' , 'pais': 'Italia' , 'tipo': 'ARQ'}, 
             {'nombre': 'Ciudad de Petra', 'pais': 'Jordania ' , 'tipo': 'ARQ'}, {'nombre': 'Bahía de Ha Long', 'pais': 'Vietnam' , 'tipo': 'NAT'}, 
             {'nombre': 'Isla Jeju', 'pais': 'Corea Sur' , 'tipo': 'NAT'}, {'nombre': 'Machu Picchu', 'pais': 'Peru' , 'tipo': 'ARQ'}, 
@@ -98,16 +121,9 @@ grafo.insertar(m7)
 
 
 grafo.mostrar()
-
 rest_visitado(grafo)
 maravillas = [m1, m2, m3, m4, m5, m6, m7]
-
 vertice = grafo.inicio
-def distancia(v1, v2, lista):
-    for i in range(len(lista)):
-        if v1.info['nombre'] in lista[i] and v2.info['nombre'] in lista[i]:
-            v1.insertar_adyacente(v2, dist[i][2])
-            return v1, v2
 n = 0
 '''def colocar_adyacencia(vertice, maravillas, dist, n):
     while vertice is not None:
@@ -128,23 +144,6 @@ n = 0
             
 colocar_adyacencia(vertice, maravillas, dist, n)            
 '''
-def ajust_vertice2(vertice, vertice2, dist):
-    if vertice2 is not None:
-        if not isinstance(vertice2.info, dict):
-            vertice2 = vertice2.info
-        if vertice.info['tipo'] == vertice2.info['tipo']:
-            distancia(vertice, vertice2, dist)
-            print(vertice.info, vertice.adyacentes.info.info, vertice.adyacentes.distancia) 
-        ajust_vertice2(vertice, vertice2.sig, dist)
-        
-def colocar_adyacencia(vertice, maravillas, dist, n):
-    if vertice is not None:
-        vertice2 = vertice.sig
-        if not vertice.visitado:
-            vertice.visitado = True
-            ajust_vertice2(vertice, vertice2, dist)
-            if n < 6:
-                n = n + 1
-                colocar_adyacencia(maravillas[n], maravillas, dist, n)
+
 
 colocar_adyacencia(vertice, maravillas, dist, n)            
